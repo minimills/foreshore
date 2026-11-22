@@ -1,0 +1,45 @@
+{
+  "size": 512,
+  "clips": {
+    "wave": {
+      "frames": 61,
+      "fps": 12,
+      "loop": false
+    },
+    "turn": {
+      "frames": 121,
+      "fps": 24,
+      "loop": false
+    },
+    "idle": {
+      "frames": 61,
+      "fps": 12,
+      "loop": true
+    },
+    "think": {
+      "frames": 61,
+      "fps": 12,
+      "loop": false
+    },
+    "celebrate": {
+      "frames": 61,
+      "fps": 12,
+      "loop": false
+    },
+    "sleep": {
+      "frames": 61,
+      "fps": 12,
+      "loop": false
+    },
+    "thumb-idle": {
+      "frames": 40,
+      "fps": 8,
+      "loop": true
+    },
+    "thumb-wave": {
+      "frames": 40,
+      "fps": 8,
+      "loop": false
+    }
+  }
+}
