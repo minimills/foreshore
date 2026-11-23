@@ -1,0 +1,21 @@
+{
+  "eyebrow": "Websites for small businesses on PEI",
+  "headingLine1": "You run a great local business.",
+  "headingLine2": "Let's give it a website to match.",
+  "subheading": "Clean, quick, phone-friendly websites for Island businesses, designed and built by one person right here in Charlottetown. No templates, no surprises.",
+  "primaryButton": "Start your project",
+  "secondaryButton": "See my work",
+  "stepsCardTitle": "Online in 5 steps",
+  "introCardTitle": "Hi, I'm Ankit",
+  "introCardText": "One local person, from first hello to launch day.",
+  "avatar": "/images/memoji-placeholder.svg",
+  "checklist": ["Works on phones", "Clear, fixed price", "Local support", "Yours to keep"],
+  "sceneImage": "/images/hero-scene.svg",
+  "sceneImageMobile": "/images/hero-scene-mobile.svg",
+  "floatingIcons": [
+    "/images/icon-pencil.svg",
+    "/images/icon-rocket.svg",
+    "/images/icon-browser.svg",
+    "/images/icon-chat.svg"
+  ]
+}

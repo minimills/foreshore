@@ -1,48 +1,39 @@
+import Link from "next/link";
 import BrandMark from "./BrandMark";
+import { getSite } from "@/lib/content";
 
-const SERVICES = [
-  { href: "https://kimba.studio/services/one-page-website", label: "One-page websites" },
-  { href: "https://kimba.studio/services/business-website", label: "Business websites" },
-  { href: "https://kimba.studio/services/online-store-booking", label: "Online stores and booking" },
-  { href: "https://kimba.studio/web-design-brisbane", label: "Web design Brisbane" },
-];
+/* Worked out when the site is built, so it updates on every new deploy. */
+async function copyrightYear() {
+  "use cache";
+  return new Date().getFullYear();
+}
 
-const STUDIO = [
-  { href: "https://kimba.studio/pricing", label: "Prices" },
-  { href: "https://kimba.studio/guides/small-business-website-cost-australia", label: "Website costs" },
-  { href: "https://kimba.studio/about", label: "About" },
-  { href: "https://kimba.studio/privacy", label: "Privacy" },
-  { href: "https://kimba.studio/terms", label: "Terms" },
-];
-
-export default function Footer() {
+export default async function Footer() {
+  const site = getSite();
+  const year = await copyrightYear();
   return (
     <footer className="footer pad">
       <div className="footer-brand">
         <BrandMark size={22} />
-        <span>© 2026 Kimba Studio · Brisbane, QLD · ABN 82 169 256 562</span>
+        <span>
+          © {year} {site.studioName} · {site.city}, {site.provinceShort}, {site.country}
+        </span>
       </div>
-      <nav className="footer-links" aria-label="Services">
-        {SERVICES.map((l) => (
-          <a key={l.href} href={l.href}>
+      <nav className="footer-links" aria-label="Footer">
+        {site.footerLinks.map((l) => (
+          <Link key={l.link} href={l.link}>
             {l.label}
-          </a>
-        ))}
-      </nav>
-      <nav className="footer-links" aria-label="Studio">
-        {STUDIO.map((l) => (
-          <a key={l.href} href={l.href}>
-            {l.label}
-          </a>
+          </Link>
         ))}
       </nav>
       <div className="footer-links">
-        <a href="https://www.instagram.com/kimbastudio_au/" rel="me noopener" target="_blank">
-          Instagram
-        </a>
-        <a href="https://www.linkedin.com/company/kimba-studio/" rel="me noopener" target="_blank">
-          LinkedIn
-        </a>
+        {site.phone && <a href={`tel:${site.phone.replace(/[^\d+]/g, "")}`}>{site.phone}</a>}
+        {site.email && <a href={`mailto:${site.email}`}>{site.email}</a>}
+        {site.socials.map((s) => (
+          <a key={s.link} href={s.link} rel="me noopener" target="_blank">
+            {s.label}
+          </a>
+        ))}
         <a href="#top">Back to top</a>
       </div>
     </footer>

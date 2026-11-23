@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
+import { getSite } from "@/lib/content";
 
-/* Self-hosted copies of the exact woff2 subsets the source page serves. */
+/* Self-hosted font files (Inter, Sora and Anton, all free open-source fonts). */
 const inter = localFont({
   src: [
     { path: "../fonts/inter-latin.woff2", weight: "400 600", style: "normal" },
@@ -33,16 +34,16 @@ const anton = localFont({
   fallback: ["Arial", "sans-serif"],
 });
 
+const site = getSite();
+
 export const metadata: Metadata = {
-  title: "Small Business Web Design Australia | Fixed Price | Kimba Studio",
-  description:
-    "Fixed-price websites for Australian small businesses from $1,500 + GST. One person from start to finish, mobile-ready, live in weeks, and you own it.",
+  title: site.seo.title,
+  description: site.seo.description,
   openGraph: {
-    title: "Small Business Web Design Australia | Fixed Price | Kimba Studio",
-    description:
-      "Fixed-price websites for Australian small businesses from $1,500 + GST. One person from start to finish, mobile-ready, live in weeks, and you own it.",
-    siteName: "Kimba Studio",
-    locale: "en_AU",
+    title: site.seo.title,
+    description: site.seo.description,
+    siteName: site.studioName,
+    locale: "en_CA",
     type: "website",
   },
   twitter: { card: "summary_large_image" },
@@ -53,7 +54,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
-      lang="en"
+      lang="en-CA"
       data-skin="motel"
       className={`${inter.variable} ${sora.variable} ${anton.variable} reveal-on`}
     >

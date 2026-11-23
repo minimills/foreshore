@@ -1,34 +1,18 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
-import {
-  FoundingTile,
-  ServicePageTile,
-  ProductShowcaseTile,
-  MascotTile,
-  StylePalettesTile,
-  ScrollStoryTile,
-  BuilderTile,
-} from "../tiles/Tiles";
+import { Fragment, useEffect, useRef, useState, type ReactNode } from "react";
 
 /* Measured from the source: ~28 px/s leftward, pauses while hovered. */
 const SPEED = 28;
 const STEP_MS = 450;
-
-function tileSet(keyPrefix: string) {
-  return [
-    <FoundingTile key={`${keyPrefix}-founding`} />,
-    <ServicePageTile key={`${keyPrefix}-service`} />,
-    <ProductShowcaseTile key={`${keyPrefix}-product`} />,
-    <MascotTile key={`${keyPrefix}-mascot`} />,
-    <StylePalettesTile key={`${keyPrefix}-palettes`} />,
-    <ScrollStoryTile key={`${keyPrefix}-scroll`} />,
-    <BuilderTile key={`${keyPrefix}-builder`} />,
-  ];
-}
+/* Short lists are repeated so the strip is always wider than the screen. */
+const MIN_TILES = 6;
 
 const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
 
-export default function TilesMarquee() {
+export default function TilesMarquee({ tiles }: { tiles: ReactNode[] }) {
+  const set: ReactNode[] = [];
+  while (tiles.length && set.length < MIN_TILES) set.push(...tiles);
+
   const trackRef = useRef<HTMLDivElement>(null);
   const xRef = useRef(0);
   const hoverRef = useRef(false);
@@ -106,8 +90,9 @@ export default function TilesMarquee() {
     >
       <div className="tiles-window">
         <div className="tiles" ref={trackRef}>
-          {tileSet("a")}
-          {tileSet("b")}
+          {[...set, ...set].map((t, i) => (
+            <Fragment key={i}>{t}</Fragment>
+          ))}
         </div>
       </div>
 

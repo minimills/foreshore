@@ -1,0 +1,11 @@
+{
+  "heading": "From hello to launch in 5 steps",
+  "steps": [
+    { "title": "Chat", "time": "Day 1", "text": "We talk about your business, your customers and what you want the website to do. Send over any words and photos you have. Rough is fine." },
+    { "title": "Design", "time": "About 1 week", "text": "I put together a design that fits your business and show it to you before anything gets built." },
+    { "title": "Feedback", "time": "1–2 weeks", "text": "You tell me what you love and what to change. Two rounds of changes are included." },
+    { "title": "Build", "time": "1–2 weeks", "text": "I build the real site and test it on phones, tablets and computers so it looks right everywhere." },
+    { "title": "Live", "time": "2–3 days", "text": "Once you're happy, I connect your domain, set up hosting and Google, and your site goes live." }
+  ],
+  "note": "These times assume I hear back from you within a couple of business days. If anything changes on my side, you'll hear from me right away."
+}

@@ -1,62 +1,90 @@
 import Link from "next/link";
 import TilesMarquee from "./TilesMarquee";
+import ProjectTile, { ProjectScreen, Tile, SkeletonUi } from "./ProjectTile";
+import { getProjects, getWork, type Project, type Work as WorkContent } from "@/lib/content";
+
+function Featured({ project, work }: { project: Project; work: WorkContent }) {
+  const href = project.liveUrl || project.demoUrl || "/#contact";
+  const button = project.liveUrl
+    ? work.featuredButtonLive
+    : project.demoUrl
+      ? work.featuredButtonDemo
+      : work.featuredButtonOther;
+
+  const inner = (
+    <>
+      <div className="featured-stage" aria-hidden="true">
+        <div className="shot laptop">
+          <ProjectScreen project={project} />
+        </div>
+        <div className="phone">
+          <div className="phone-screen">
+            <div className="l" style={{ width: "50%" }} />
+            <div className="img" />
+            <div className="l" />
+            <div className="l" style={{ width: "70%" }} />
+          </div>
+        </div>
+      </div>
+
+      <div className="featured-copy">
+        <span className="pill pill-offer" style={{ alignSelf: "flex-start" }}>
+          {[project.type, project.status].filter(Boolean).join(" · ")}
+        </span>
+        <h3>{project.title}</h3>
+        <p className="muted" style={{ lineHeight: 1.6 }}>
+          {project.summary}
+        </p>
+        <span className="btn btn-ink" style={{ alignSelf: "flex-start" }}>
+          {button}
+        </span>
+        {project.tags.length > 0 && (
+          <p className="offer-note muted">{project.tags.join(" · ")}</p>
+        )}
+      </div>
+    </>
+  );
+
+  return href.startsWith("/") ? (
+    <Link className="featured" data-reveal="" href={href}>
+      {inner}
+    </Link>
+  ) : (
+    <a className="featured" data-reveal="" href={href} target="_blank" rel="noopener">
+      {inner}
+    </a>
+  );
+}
 
 export default function Work() {
+  const work = getWork();
+  const projects = getProjects();
+  const featured = projects.find((p) => p.featured);
+  const others = projects.filter((p) => p !== featured);
+
+  const tiles = others.map((p) => <ProjectTile key={p.slug} project={p} />);
+  if (work.inviteTile.show) {
+    tiles.unshift(
+      <Tile
+        key="invite"
+        href="/#contact"
+        title={work.inviteTile.title}
+        pill={work.inviteTile.label}
+        pillClass="pill-offer"
+        text={work.inviteTile.text}
+      >
+        <SkeletonUi />
+      </Tile>
+    );
+  }
+
   return (
     <section id="work" className="work pad">
-      <h2 data-reveal="">Recent work</h2>
-
-      <Link className="featured" data-reveal="" data-founding="true" href="/#contact">
-        <div className="featured-stage" aria-hidden="true">
-          <div className="shot laptop">
-            <div className="ui">
-              <div className="l" style={{ width: "30%" }} />
-              <div
-                className="b"
-                style={{ height: 120, background: "linear-gradient(135deg,var(--bg-2),var(--leaf-soft))" }}
-              />
-              <div className="l" style={{ width: "80%" }} />
-              <div className="l" style={{ width: "60%" }} />
-              <div className="row3">
-                <div className="b" />
-                <div className="b" />
-                <div className="b" />
-              </div>
-            </div>
-          </div>
-          <div className="phone">
-            <div className="phone-screen">
-              <div className="l" style={{ width: "50%" }} />
-              <div className="img" />
-              <div className="l" />
-              <div className="l" style={{ width: "70%" }} />
-            </div>
-          </div>
-        </div>
-
-        <div className="featured-copy">
-          <span className="pill pill-offer" style={{ alignSelf: "flex-start" }}>
-            Founding client spots: 3 available
-          </span>
-          <h3>This space is saved for your business.</h3>
-          <p className="muted" style={{ lineHeight: 1.6 }}>
-            I&apos;m choosing the first few projects to feature here. Founding clients get 25% off
-            any package in exchange for letting me feature the finished site as a case study.
-          </p>
-          <span className="btn btn-ink" style={{ alignSelf: "flex-start" }}>
-            Start your project
-          </span>
-          <p className="offer-note muted">
-            Same process, same 2 feedback rounds, same quality. Just a better price, once.
-          </p>
-        </div>
-      </Link>
-
-      <TilesMarquee />
-
+      <h2 data-reveal="">{work.heading}</h2>
+      {featured && <Featured project={featured} work={work} />}
+      {tiles.length > 0 && <TilesMarquee tiles={tiles} />}
       <p className="muted note" data-reveal="">
-        Concept sites are demo builds for realistic local businesses, so you can see exactly what
-        you&apos;d get. Every project is labelled as a client site or a concept.
+        {work.note}
       </p>
     </section>
   );

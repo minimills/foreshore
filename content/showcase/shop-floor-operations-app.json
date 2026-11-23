@@ -1,0 +1,13 @@
+{
+  "title": "Shop Floor Operations App",
+  "type": "Web app",
+  "status": "Demo",
+  "summary": "A web app for a manufacturing business that keeps the shop floor organized: track order payments and deadlines, chat with the team, log timesheets and pull simple reports.",
+  "cover": "/images/shop-floor-cover.svg",
+  "screenshots": ["/images/shop-floor-screenshot-1.svg"],
+  "liveUrl": "",
+  "demoUrl": "",
+  "tags": ["Web app", "Manufacturing", "Orders", "Timesheets", "Reports"],
+  "featured": true,
+  "order": 1
+}

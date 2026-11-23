@@ -1,0 +1,13 @@
+{
+  "title": "Online Store",
+  "type": "Website concept",
+  "status": "Coming soon",
+  "summary": "A simple online store for a local maker, with product pages, secure checkout and local pickup or shipping.",
+  "cover": "",
+  "screenshots": [],
+  "liveUrl": "",
+  "demoUrl": "",
+  "tags": ["E-commerce", "Products"],
+  "featured": false,
+  "order": 4
+}

@@ -1,3 +1,4 @@
+/* The studio logo: a browser window with an "F" inside. Colours follow the theme. */
 export default function BrandMark({ size = 28 }: { size?: number }) {
   return (
     <svg
@@ -17,8 +18,8 @@ export default function BrandMark({ size = 28 }: { size?: number }) {
       </g>
       <g stroke="#3F7322" strokeWidth="11.5" strokeLinecap="round">
         <line x1="40" y1="41" x2="40" y2="67" />
-        <line x1="41" y1="56" x2="59" y2="41" />
-        <line x1="47" y1="51" x2="59" y2="67" />
+        <line x1="40" y1="41" x2="60" y2="41" />
+        <line x1="40" y1="54" x2="55" y2="54" />
       </g>
     </svg>
   );

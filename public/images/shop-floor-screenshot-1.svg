@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" font-family="system-ui, sans-serif">
+  <rect width="1200" height="800" fill="#f5f6fa"/>
+  <rect width="220" height="800" fill="#1f2a44"/>
+  <text x="32" y="58" font-size="26" font-weight="700" fill="#fff">Shop Floor</text>
+  <g font-size="19" fill="#c9d1e6"><text x="32" y="130">Dashboard</text><text x="32" y="180">Orders</text><text x="32" y="230" fill="#fff">Team chat</text><text x="32" y="280">Timesheets</text><text x="32" y="330">Reports</text></g>
+  <rect x="16" y="204" width="188" height="40" rx="8" fill="#ffffff1f"/>
+  <text x="260" y="70" font-size="32" font-weight="700" fill="#1f2a44">Team chat</text>
+  <rect x="260" y="100" width="908" height="660" rx="16" fill="#fff"/>
+  <g font-size="18">
+    <circle cx="310" cy="170" r="22" fill="#c7d2fe"/><rect x="346" y="140" width="420" height="60" rx="16" fill="#eef0f5"/><text x="366" y="177" fill="#374151">Order #1043 is ready for welding.</text>
+    <circle cx="310" cy="270" r="22" fill="#fde68a"/><rect x="346" y="240" width="380" height="60" rx="16" fill="#eef0f5"/><text x="366" y="277" fill="#374151">Great, I'll start after lunch.</text>
+    <rect x="690" y="340" width="430" height="60" rx="16" fill="#4f6bed"/><text x="710" y="377" fill="#fff">Customer paid the deposit for #1044.</text>
+    <circle cx="310" cy="470" r="22" fill="#bbf7d0"/><rect x="346" y="440" width="460" height="60" rx="16" fill="#eef0f5"/><text x="366" y="477" fill="#374151">Logged 7.5 hours on the railings today.</text>
+  </g>
+  <rect x="284" y="680" width="860" height="56" rx="28" fill="#f5f6fa" stroke="#e5e7eb" stroke-width="2"/>
+  <text x="314" y="715" font-size="18" fill="#9ca3af">Write a message…</text>
+</svg>

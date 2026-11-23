@@ -1,0 +1,29 @@
+{
+  "studioName": "Foreshore Studio",
+  "ownerName": "Ankit",
+  "city": "Charlottetown",
+  "province": "Prince Edward Island",
+  "provinceShort": "PE",
+  "country": "Canada",
+  "email": "",
+  "phone": "",
+  "socials": [],
+  "mainButton": "Start your project",
+  "navLinks": [
+    { "label": "Work", "link": "/#work" },
+    { "label": "Pricing", "link": "/#pricing" },
+    { "label": "How it works", "link": "/#process" },
+    { "label": "About", "link": "/#about" }
+  ],
+  "footerLinks": [
+    { "label": "Pricing", "link": "/#pricing" },
+    { "label": "How it works", "link": "/#process" },
+    { "label": "Questions", "link": "/#faq" },
+    { "label": "Privacy", "link": "/privacy" },
+    { "label": "Terms", "link": "/terms" }
+  ],
+  "seo": {
+    "title": "Web Design for Small Businesses in PEI | Foreshore Studio",
+    "description": "Friendly, fixed-price websites for small businesses in Charlottetown and across Prince Edward Island. Websites from $499 CAD, designed, built and looked after by one local person."
+  }
+}

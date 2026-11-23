@@ -3,7 +3,7 @@ import { useEffect, useRef } from "react";
 import Link from "next/link";
 
 /** Sticky CTA shown under 640px; hides itself while the enquiry form is in view. */
-export default function MobileCta() {
+export default function MobileCta({ label }: { label: string }) {
   const ref = useRef<HTMLAnchorElement>(null);
 
   useEffect(() => {
@@ -23,7 +23,7 @@ export default function MobileCta() {
 
   return (
     <Link href="/#contact" className="mobile-cta" ref={ref}>
-      Start your project{" "}
+      {label}{" "}
       <span className="arr" aria-hidden="true">
         →
       </span>
