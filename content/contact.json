@@ -1,0 +1,21 @@
+{
+  "heading": "Let's build yours",
+  "intro": "Tell me a little about your business and what you need. I'll reply within 2 business days with a clear, fixed quote. No pressure at all.",
+  "nameLabel": "Name",
+  "emailLabel": "Email",
+  "phoneLabel": "Phone",
+  "businessLabel": "Business name",
+  "projectTypeQuestion": "Is this a new website or a refresh?",
+  "projectTypeOptions": ["New website", "Refresh my current site"],
+  "packageQuestion": "Which package are you interested in?",
+  "packagePlaceholder": "Choose one",
+  "notSureOption": "Not sure yet",
+  "goalQuestion": "What would you like your website to do for you?",
+  "goalPlaceholder": "e.g. bring in more calls, take bookings online, look more professional",
+  "privacyText": "Your details are only used to reply to your enquiry.",
+  "privacyLinkText": "Privacy policy",
+  "buttonText": "Send my enquiry",
+  "emailPrompt": "Prefer email?",
+  "formAccessKey": "d1ebe649-0f68-4c4b-a5ae-4545f4b79291",
+  "emailSubject": "New enquiry from the Foreshore Studio website"
+}

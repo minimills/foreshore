@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2400 1030" preserveAspectRatio="xMidYMax slice">
+  <defs>
+    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2b63c"/><stop offset="1" stop-color="#ff7ab8"/></linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#6a5aa8"/><stop offset="1" stop-color="#2a2248"/></linearGradient>
+    <linearGradient id="sand" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9735a"/><stop offset="1" stop-color="#8f3f52"/></linearGradient>
+  </defs>
+  <circle cx="1200" cy="640" r="300" fill="url(#sun)"/>
+  <g fill="#614d98"><rect x="880" y="560" width="640" height="10"/><rect x="880" y="600" width="640" height="16"/><rect x="880" y="645" width="640" height="22"/></g>
+  <path d="M0 520 C220 500 420 540 640 600 L760 680 L0 700 Z" fill="#b8527f"/>
+  <path d="M0 520 C220 500 420 540 640 600 L650 612 C420 560 220 525 0 545 Z" fill="#5fae6a"/>
+  <path d="M2400 470 C2160 470 1960 520 1780 600 L1680 690 L2400 700 Z" fill="#b8527f"/>
+  <path d="M2400 470 C2160 470 1960 520 1780 600 L1770 614 C1960 540 2160 494 2400 494 Z" fill="#5fae6a"/>
+  <g transform="translate(2060 300)">
+    <path d="M10 210 L24 0 H56 L70 210 Z" fill="#fff3f8"/>
+    <path d="M18 120 H62 L65 160 H15 Z M24 40 H56 L58 75 H22 Z" fill="#ff7ab8"/>
+    <rect x="18" y="-34" width="44" height="34" rx="4" fill="#2a2248"/>
+    <rect x="26" y="-28" width="28" height="22" fill="#f2b63c"/>
+    <path d="M12 -34 L40 -64 L68 -34 Z" fill="#ff7ab8"/>
+  </g>
+  <rect x="0" y="690" width="2400" height="340" fill="url(#sea)"/>
+  <g fill="none" stroke="#a99bd6" stroke-width="5" stroke-linecap="round" opacity=".7">
+    <path d="M980 730 h440 M1040 770 h320 M1100 810 h200"/>
+    <path d="M160 760 c40 -18 80 18 120 0 s80 18 120 0 M1800 800 c40 -18 80 18 120 0 s80 18 120 0"/>
+  </g>
+  <path d="M0 900 C400 850 800 940 1200 900 C1600 860 2000 930 2400 880 V1030 H0 Z" fill="url(#sand)"/>
+  <path d="M0 900 C400 850 800 940 1200 900 C1600 860 2000 930 2400 880" fill="none" stroke="#fff3f8" stroke-width="6" opacity=".55"/>
+</svg>

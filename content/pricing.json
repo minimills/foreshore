@@ -1,0 +1,35 @@
+{
+  "heading": "Simple packages. Prices you can see up front.",
+  "intro": "Every package includes design, building, testing on phones and computers, and a working contact form. All prices are in Canadian dollars.",
+  "buttonText": "Start your project",
+  "popularLabel": "Most popular",
+  "carePlansHeading": "Care plans (optional)",
+  "carePlans": [
+    {
+      "name": "Care Basic",
+      "priceYearly": "$49/mo billed yearly",
+      "priceMonthly": "or $59 monthly",
+      "description": "Hosting, security updates and regular backups, so your site keeps running smoothly.",
+      "features": [
+        "Hosting",
+        "Security updates",
+        "Backups"
+      ]
+    },
+    {
+      "name": "Care Plus",
+      "priceYearly": "$99/mo billed yearly",
+      "priceMonthly": "or $119 monthly",
+      "description": "Everything in Care Basic, plus up to an hour of changes each month and a quick check on how your site is doing.",
+      "features": [
+        "Everything in Care Basic",
+        "Up to 1 hour of edits a month",
+        "Monthly check-in"
+      ]
+    }
+  ],
+  "notes": [
+    "A 50% deposit gets your project started. The rest is due when your site goes live.",
+    "Prices are in Canadian dollars. Applicable taxes are extra."
+  ]
+}

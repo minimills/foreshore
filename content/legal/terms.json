@@ -1,0 +1,13 @@
+{
+  "title": "Terms of use",
+  "lastUpdated": "DRAFT: November 2026",
+  "intro": "DRAFT: please review this, ideally with a professional, before relying on it. These terms cover your use of the Foreshore Studio website. Each client project also has its own written quote and agreement, which take priority over these terms.",
+  "sections": [
+    { "heading": "About this website", "text": "This website is run by Foreshore Studio, a web design business based in Charlottetown, Prince Edward Island, Canada. It's here to describe my services and let you get in touch." },
+    { "heading": "Prices and quotes", "text": "Prices shown are in Canadian dollars and are a guide. Your project's final price is the fixed price in your written quote. Applicable taxes are extra." },
+    { "heading": "Showcase projects", "text": "Projects marked Demo or Coming soon are sample builds made to show my work. They don't represent real client businesses unless marked Live." },
+    { "heading": "Content and ownership", "text": "The text, design and images on this website belong to Foreshore Studio unless stated otherwise. Please don't copy them without permission. Once a client project is paid in full, the client owns their finished website as set out in their agreement." },
+    { "heading": "No guarantees", "text": "I work hard to keep this website accurate and available, but I can't promise it will always be error-free or online. To the extent the law allows, I'm not responsible for losses from using this website." },
+    { "heading": "Governing law", "text": "These terms are governed by the laws of Prince Edward Island and the federal laws of Canada that apply there." }
+  ]
+}

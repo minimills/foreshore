@@ -1,0 +1,23 @@
+{
+  "heading": "Recent work",
+  "note": "Projects marked Demo or Coming soon are sample builds that show the kind of work I do. Real client websites are marked Live.",
+  "allWorkLink": "See all work",
+  "pageHeading": "Work",
+  "pageIntro": "Websites and web apps I've built, plus a few sample projects that show the kind of thing I can make for your business.",
+  "featuredButtonPage": "See the project",
+  "featuredButtonLive": "Visit the site",
+  "featuredButtonDemo": "Try the demo",
+  "featuredButtonOther": "Ask me about it",
+  "inviteTile": {
+    "show": true,
+    "title": "Your business here",
+    "label": "Now booking",
+    "text": "Taking on new Island projects this season"
+  },
+  "projectBackLink": "All work",
+  "screenshotsHeading": "Screenshots",
+  "projectCtaHeading": "Want something like this for your business?",
+  "projectCtaButton": "Start your project",
+  "liveButton": "Visit the site",
+  "demoButton": "Try the demo"
+}

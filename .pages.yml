@@ -1,0 +1,345 @@
+# Pages CMS settings (https://pagescms.org/docs/configuration/)
+# This tells Pages CMS which files hold the website's content and which
+# form fields to show for each one. See EDITING.md for how to use it.
+
+media:
+  input: public/images
+  output: /images
+  categories: [image]
+
+content:
+  # ---------------------------------------------------------------- Showcase
+  - name: showcase
+    label: Showcase projects
+    type: collection
+    path: content/showcase
+    format: json
+    filename: "{primary}.json"
+    view:
+      fields: [title, status, order, featured]
+      primary: title
+      sort: [order, title]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - { name: title, label: Project name, type: string, required: true }
+      - { name: type, label: Type, type: string, description: "e.g. Website, Web app, Online store" }
+      - name: status
+        label: Status
+        type: select
+        options:
+          values: [Live, Demo, Concept, Coming soon]
+      - { name: summary, label: Short description, type: text }
+      - { name: cover, label: Cover image, type: image, description: "Wide screenshot, about 1200 x 800" }
+      - name: screenshots
+        label: Extra screenshots
+        type: image
+        description: The first one fades in when people hover over the project.
+        options:
+          multiple: true
+      - { name: liveUrl, label: Live website link, type: string, description: "Full address, e.g. https://example.ca" }
+      - { name: demoUrl, label: Demo link, type: string }
+      - { name: tags, label: Tags, type: string, list: true }
+      - { name: featured, label: Featured (shown large at the top of Recent work), type: boolean }
+      - { name: order, label: Order (1 shows first), type: number }
+      - name: hasPage
+        label: Has its own page
+        type: boolean
+        description: "Tick to give this project its own page at /work/<file name>, using the Details below."
+      - name: details
+        label: Details (for its own page)
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{heading}"
+        fields:
+          - { name: heading, label: Heading, type: string }
+          - { name: text, label: Text, type: text, description: Leave an empty line between paragraphs. }
+
+  - name: packages
+    label: Packages
+    type: collection
+    path: content/packages
+    format: json
+    filename: "{primary}.json"
+    view:
+      fields: [name, price, order]
+      primary: name
+      sort: [order, name]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - { name: name, label: Package name, type: string, required: true }
+      - { name: price, label: Price (e.g. $999 or from $1,499), type: string }
+      - { name: description, label: Short description (pricing list), type: text }
+      - { name: features, label: "What's included", type: string, list: true }
+      - { name: timeline, label: Timeline, type: string }
+      - { name: mostPopular, label: Most popular, type: boolean }
+      - { name: order, label: Order (1 shows first), type: number }
+      - { name: pageIntro, label: Page intro (top of its own page), type: text }
+      - { name: whoItsFor, label: "Who it's for", type: text }
+      - name: details
+        label: More details
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{heading}"
+        fields:
+          - { name: heading, label: Heading, type: string }
+          - { name: text, label: Text, type: text, description: Leave an empty line between paragraphs. }
+      - name: screenshots
+        label: Example screenshots
+        type: image
+        options:
+          multiple: true
+
+  # ---------------------------------------------------------------- Pages
+  - name: site
+    label: Site settings
+    type: file
+    path: content/site.json
+    format: json
+    fields:
+      - { name: studioName, label: Studio name, type: string }
+      - { name: ownerName, label: Your name, type: string }
+      - { name: city, label: City, type: string }
+      - { name: province, label: Province, type: string }
+      - { name: provinceShort, label: Province (short), type: string }
+      - { name: country, label: Country, type: string }
+      - { name: email, label: Email, type: string, description: Leave empty to hide it on the site. }
+      - { name: phone, label: Phone, type: string, description: Leave empty to hide it on the site. }
+      - name: socials
+        label: Social links
+        type: object
+        list: true
+        fields:
+          - { name: label, label: Name (e.g. Instagram), type: string }
+          - { name: link, label: Full address, type: string }
+      - { name: mainButton, label: Main button text, type: string }
+      - name: navLinks
+        label: Top menu links
+        type: object
+        list: true
+        fields:
+          - { name: label, type: string }
+          - { name: link, type: string }
+      - name: footerLinks
+        label: Footer links
+        type: object
+        list: true
+        fields:
+          - { name: label, type: string }
+          - { name: link, type: string }
+      - name: seo
+        label: Google (page title and description)
+        type: object
+        fields:
+          - { name: title, label: Page title, type: string, options: { maxlength: 70 } }
+          - { name: description, label: Description, type: text, options: { maxlength: 170 } }
+
+  - name: hero
+    label: Hero (top of page)
+    type: file
+    path: content/hero.json
+    format: json
+    fields:
+      - { name: eyebrow, label: Small line above the heading, type: string }
+      - { name: headingLine1, label: Heading line 1, type: string }
+      - { name: headingLine2, label: Heading line 2, type: string }
+      - { name: subheading, label: Subheading, type: text }
+      - { name: primaryButton, label: Main button text, type: string }
+      - { name: secondaryButton, label: Second button text, type: string }
+      - { name: stepsCardTitle, label: Steps card title, type: string, description: The step names come from How it works. }
+      - { name: introCardTitle, label: Intro card title, type: string }
+      - { name: introCardText, label: Intro card text, type: string }
+      - { name: avatar, label: Intro card picture (your Memoji), type: image }
+      - { name: checklist, label: Checklist items, type: string, list: true }
+      - { name: sceneImage, label: Background scene (desktop), type: image }
+      - { name: sceneImageMobile, label: Background scene (phone), type: image }
+      - name: floatingIcons
+        label: Floating icons (up to 4)
+        type: image
+        options:
+          multiple:
+            max: 4
+
+  - name: work
+    label: Recent work section
+    type: file
+    path: content/work.json
+    format: json
+    fields:
+      - { name: heading, label: Heading, type: string }
+      - { name: note, label: Note under the projects, type: text }
+      - { name: allWorkLink, label: '"See all work" link text', type: string }
+      - { name: pageHeading, label: Work page heading, type: string }
+      - { name: pageIntro, label: Work page intro, type: text }
+      - { name: featuredButtonPage, label: Featured button (has its own page), type: string }
+      - { name: featuredButtonLive, label: Featured button (live site), type: string }
+      - { name: featuredButtonDemo, label: Featured button (demo), type: string }
+      - { name: featuredButtonOther, label: Featured button (no link), type: string }
+      - name: inviteTile
+        label: '"Your business here" tile'
+        type: object
+        fields:
+          - { name: show, label: Show this tile, type: boolean }
+          - { name: title, type: string }
+          - { name: label, label: Badge, type: string }
+          - { name: text, type: string }
+      - { name: projectBackLink, label: Project page back link, type: string }
+      - { name: screenshotsHeading, label: Project page screenshots heading, type: string }
+      - { name: projectCtaHeading, label: Project page closing question, type: string }
+      - { name: projectCtaButton, label: Project page closing button, type: string }
+      - { name: liveButton, label: Project page live site button, type: string }
+      - { name: demoButton, label: Project page demo button, type: string }
+
+  - name: packagePage
+    label: Package pages (shared text)
+    type: file
+    path: content/package-page.json
+    format: json
+    fields:
+      - { name: includedHeading, label: "\"What's included\" heading", type: string }
+      - { name: whoItsForHeading, label: "\"Who it's for\" heading", type: string }
+      - { name: screenshotsHeading, label: Screenshots heading, type: string }
+      - { name: buttonText, label: Button text, type: string }
+      - { name: backLink, label: Back link text, type: string }
+
+  - name: pricing
+    label: Pricing
+    type: file
+    path: content/pricing.json
+    format: json
+    fields:
+      - { name: heading, label: Heading, type: string }
+      - { name: intro, label: Intro text, type: text }
+      - { name: buttonText, label: Button text, type: string }
+      - { name: popularLabel, label: '"Most popular" badge text', type: string }
+      - { name: carePlansHeading, label: Care plans heading, type: string }
+      - name: carePlans
+        label: Care plans
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name}"
+        fields:
+          - { name: name, label: Name, type: string }
+          - { name: priceYearly, label: Main price (e.g. $49/mo billed yearly), type: string }
+          - { name: priceMonthly, label: Second price (e.g. or $59 monthly), type: string }
+          - { name: description, label: Description, type: text }
+          - { name: features, label: Features, type: string, list: true }
+      - { name: notes, label: Notes (small print), type: text, list: true }
+
+  - name: process
+    label: How it works
+    type: file
+    path: content/process.json
+    format: json
+    fields:
+      - { name: heading, label: Heading, type: string }
+      - name: steps
+        label: Steps
+        type: object
+        list: true
+        fields:
+          - { name: title, label: Step name, type: string }
+          - { name: time, label: How long, type: string }
+          - { name: text, label: Description, type: text }
+      - { name: note, label: Note under the steps, type: text }
+
+  - name: about
+    label: About
+    type: file
+    path: content/about.json
+    format: json
+    fields:
+      - { name: heading, label: Heading, type: string }
+      - { name: text, label: Text, type: text, description: Leave an empty line between paragraphs. }
+      - { name: portrait, label: Portrait (your Memoji), type: image }
+      - { name: portraitAlt, label: Portrait description (for screen readers), type: string }
+
+  - name: faq
+    label: FAQ
+    type: file
+    path: content/faq.json
+    format: json
+    fields:
+      - { name: heading, label: Heading, type: string }
+      - name: items
+        label: Questions
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{question}"
+        fields:
+          - { name: question, label: Question, type: string }
+          - { name: answer, label: Answer, type: text }
+
+  - name: contact
+    label: Contact form
+    type: file
+    path: content/contact.json
+    format: json
+    fields:
+      - { name: heading, label: Heading, type: string }
+      - { name: intro, label: Intro text, type: text }
+      - { name: nameLabel, label: Name field label, type: string }
+      - { name: emailLabel, label: Email field label, type: string }
+      - { name: phoneLabel, label: Phone field label, type: string }
+      - { name: businessLabel, label: Business field label, type: string }
+      - { name: projectTypeQuestion, label: Project type question, type: string }
+      - { name: projectTypeOptions, label: Project type choices, type: string, list: true }
+      - { name: packageQuestion, label: Package question, type: string, description: The package choices come from Packages. }
+      - { name: packagePlaceholder, label: Package placeholder, type: string }
+      - { name: notSureOption, label: '"Not sure" choice', type: string }
+      - { name: goalQuestion, label: Goal question, type: string }
+      - { name: goalPlaceholder, label: Goal example text, type: string }
+      - { name: privacyText, label: Privacy line, type: string }
+      - { name: privacyLinkText, label: Privacy link text, type: string }
+      - { name: buttonText, label: Send button text, type: string }
+      - { name: emailPrompt, label: Text before your email, type: string }
+      - { name: emailSubject, label: Subject of enquiry emails you receive, type: string }
+      - name: formAccessKey
+        label: Web3Forms access key
+        type: string
+        description: Get a free key at web3forms.com. The form can't send until this is filled in.
+
+  - name: privacy
+    label: Privacy policy
+    type: file
+    path: content/legal/privacy.json
+    format: json
+    fields:
+      - { name: title, label: Title, type: string }
+      - { name: lastUpdated, label: Last updated, type: string }
+      - { name: intro, label: Intro, type: text }
+      - name: sections
+        label: Sections
+        type: object
+        list: true
+        fields:
+          - { name: heading, label: Heading, type: string }
+          - { name: text, label: Text, type: text, description: Leave an empty line between paragraphs. }
+
+  - name: terms
+    label: Terms of use
+    type: file
+    path: content/legal/terms.json
+    format: json
+    fields:
+      - { name: title, label: Title, type: string }
+      - { name: lastUpdated, label: Last updated, type: string }
+      - { name: intro, label: Intro, type: text }
+      - name: sections
+        label: Sections
+        type: object
+        list: true
+        fields:
+          - { name: heading, label: Heading, type: string }
+          - { name: text, label: Text, type: text, description: Leave an empty line between paragraphs. }

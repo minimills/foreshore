@@ -1,0 +1,31 @@
+{
+  "name": "Business Website (4–5 pages)",
+  "price": "$999",
+  "description": "Room to tell your story, with services, about, gallery and contact each on their own page.",
+  "features": [
+    "4–5 pages",
+    "Contact form",
+    "Google-ready titles and descriptions",
+    "Two rounds of changes"
+  ],
+  "timeline": "2–4 weeks",
+  "mostPopular": true,
+  "order": 2,
+  "pageIntro": "A business website gives you room to tell your story properly, with a separate page for each part of your business so customers find what they need quickly and Google understands what you do.",
+  "whoItsFor": "Established local businesses, trades, clinics, studios and service providers who want a site that answers customer questions and brings in enquiries.",
+  "details": [
+    {
+      "heading": "Typical pages",
+      "text": "Home, services, about, gallery or past work, and contact. If you need something a little different, like a menu or a price list, we can swap a page."
+    },
+    {
+      "heading": "Set up for Google",
+      "text": "Each page gets a clear title and description, the site gets a sitemap, and I connect it to Google Search Console at launch so you can see how people find you."
+    },
+    {
+      "heading": "How it works",
+      "text": "After our first chat I design the look, then build the full site. You get two rounds of changes to get everything just right before it goes live, usually within 2 to 4 weeks."
+    }
+  ],
+  "screenshots": []
+}
