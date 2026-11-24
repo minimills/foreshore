@@ -8,12 +8,9 @@ import Faq from "@/components/site/Faq";
 import Contact from "@/components/site/Contact";
 import Footer from "@/components/site/Footer";
 import Reveal from "@/components/site/Reveal";
-import MobileCta from "@/components/site/MobileCta";
-import { getSite } from "@/lib/content";
 import { BandWaveTop, BandWaveBottom, CtaWaveTop } from "@/components/site/Waves";
 
 export default function Home() {
-  const site = getSite();
   return (
     <>
       <Reveal />
@@ -40,7 +37,6 @@ export default function Home() {
           <CtaWaveTop />
           <div className="blob blob-4" aria-hidden="true" />
           <Contact />
-          <MobileCta label={site.mainButton} />
           <Footer />
         </div>
       </div>

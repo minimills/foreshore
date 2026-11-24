@@ -7,7 +7,12 @@
   "screenshots": [],
   "liveUrl": "",
   "demoUrl": "",
-  "tags": ["E-commerce", "Products"],
+  "tags": [
+    "E-commerce",
+    "Products"
+  ],
   "featured": false,
-  "order": 4
+  "order": 4,
+  "hasPage": false,
+  "details": []
 }

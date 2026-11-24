@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { img, type Project } from "@/lib/content";
+import { img, projectHref, type Project } from "@/lib/format";
 
 /* Grey "wireframe" stand-in, used when a project has no cover image yet. */
 export function SkeletonUi({ tall = 90 }: { tall?: number }) {
@@ -41,15 +41,19 @@ export const pillClass = (status: string) =>
   status.toLowerCase() === "live" ? "pill-offer" : "pill-concept";
 
 type TileProps = {
-  href: string;
   title: string;
   pill: string;
   pillClass: string;
   text: string;
   children: React.ReactNode;
+  /** Where the tile goes when clicked. Ignored when onClick is given. */
+  href?: string;
+  /** Run instead of following a link (used by the homepage carousel). */
+  onClick?: () => void;
+  active?: boolean;
 };
 
-export function Tile({ href, title, pill, pillClass, text, children }: TileProps) {
+export function Tile({ href = "", title, pill, pillClass, text, children, onClick, active }: TileProps) {
   const inner = (
     <>
       <div className="shot" aria-hidden="true">
@@ -62,6 +66,18 @@ export function Tile({ href, title, pill, pillClass, text, children }: TileProps
       <span className="muted tile-industry">{text}</span>
     </>
   );
+  if (onClick) {
+    return (
+      <button
+        type="button"
+        className={`tile tile-btn${active ? " is-active" : ""}`}
+        aria-pressed={active}
+        onClick={onClick}
+      >
+        {inner}
+      </button>
+    );
+  }
   if (!href) return <div className="tile">{inner}</div>;
   if (href.startsWith("/")) {
     return (
@@ -77,10 +93,14 @@ export function Tile({ href, title, pill, pillClass, text, children }: TileProps
   );
 }
 
-export default function ProjectTile({ project }: { project: Project }) {
+type ProjectTileProps = { project: Project; onClick?: () => void; active?: boolean };
+
+export default function ProjectTile({ project, onClick, active }: ProjectTileProps) {
   return (
     <Tile
-      href={project.liveUrl || project.demoUrl}
+      href={projectHref(project)}
+      onClick={onClick}
+      active={active}
       title={project.title}
       pill={project.status}
       pillClass={pillClass(project.status)}

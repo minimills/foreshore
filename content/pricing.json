@@ -3,32 +3,6 @@
   "intro": "Every package includes design, building, testing on phones and computers, and a working contact form. All prices are in Canadian dollars.",
   "buttonText": "Start your project",
   "popularLabel": "Most popular",
-  "packages": [
-    {
-      "name": "One-Page Website",
-      "price": "$499",
-      "description": "One tidy page with everything a new or small business needs to be found and contacted.",
-      "features": ["One scrolling page", "Contact form", "Phone-friendly design", "Basic Google setup"],
-      "timeline": "About 1 week",
-      "mostPopular": false
-    },
-    {
-      "name": "Business Website (4–5 pages)",
-      "price": "$999",
-      "description": "Room to tell your story, with services, about, gallery and contact each on their own page.",
-      "features": ["4–5 pages", "Contact form", "Google-ready titles and descriptions", "Two rounds of changes"],
-      "timeline": "2–4 weeks",
-      "mostPopular": true
-    },
-    {
-      "name": "Booking or Online Store",
-      "price": "from $1,499",
-      "description": "Take bookings or sell online, with features shaped around how your business runs.",
-      "features": ["Online bookings or a product shop", "Secure payment setup", "A walkthrough so you can run it yourself"],
-      "timeline": "4–6 weeks",
-      "mostPopular": false
-    }
-  ],
   "carePlansHeading": "Care plans (optional)",
   "carePlans": [
     {
@@ -36,14 +10,22 @@
       "priceYearly": "$49/mo billed yearly",
       "priceMonthly": "or $59 monthly",
       "description": "Hosting, security updates and regular backups, so your site keeps running smoothly.",
-      "features": ["Hosting", "Security updates", "Backups"]
+      "features": [
+        "Hosting",
+        "Security updates",
+        "Backups"
+      ]
     },
     {
       "name": "Care Plus",
       "priceYearly": "$99/mo billed yearly",
       "priceMonthly": "or $119 monthly",
       "description": "Everything in Care Basic, plus up to an hour of changes each month and a quick check on how your site is doing.",
-      "features": ["Everything in Care Basic", "Up to 1 hour of edits a month", "Monthly check-in"]
+      "features": [
+        "Everything in Care Basic",
+        "Up to 1 hour of edits a month",
+        "Monthly check-in"
+      ]
     }
   ],
   "notes": [

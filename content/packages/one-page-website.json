@@ -1,0 +1,27 @@
+{
+  "name": "One-Page Website",
+  "price": "$499",
+  "description": "One tidy page with everything a new or small business needs to be found and contacted.",
+  "features": [
+    "One scrolling page",
+    "Contact form",
+    "Phone-friendly design",
+    "Basic Google setup"
+  ],
+  "timeline": "About 1 week",
+  "mostPopular": false,
+  "order": 1,
+  "pageIntro": "A one-page website is the quickest way to get your business online properly. Everything people need sits on a single, scrolling page: who you are, what you offer, where to find you and how to get in touch.",
+  "whoItsFor": "New businesses, side businesses, seasonal businesses and anyone who needs a clean, professional presence without lots of pages to look after.",
+  "details": [
+    {
+      "heading": "What's on the page",
+      "text": "A welcoming introduction, your services or products, a short about section, opening hours or service area, and a contact form. We'll pick the sections that fit your business best."
+    },
+    {
+      "heading": "How it works",
+      "text": "We start with a short chat about your business. I design the page, you tell me what to change, then I build it, test it on phones and computers, and put it live on your domain.\n\nYou'll usually be online in about a week."
+    }
+  ],
+  "screenshots": []
+}

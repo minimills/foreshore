@@ -1,0 +1,30 @@
+{
+  "name": "Booking or Online Store",
+  "price": "from $1,499",
+  "description": "Take bookings or sell online, with features shaped around how your business runs.",
+  "features": [
+    "Online bookings or a product shop",
+    "Secure payment setup",
+    "A walkthrough so you can run it yourself"
+  ],
+  "timeline": "4–6 weeks",
+  "mostPopular": false,
+  "order": 3,
+  "pageIntro": "Let customers book appointments or buy from you any time of day. This package covers everything in a business website, plus online bookings or a product shop shaped around how your business runs.",
+  "whoItsFor": "Salons, clinics, tour operators and other appointment-based businesses, and local makers or shops that want to sell online.",
+  "details": [
+    {
+      "heading": "Bookings",
+      "text": "Customers pick a service and a time that suits them, and you get a notification. Reminders and deposits can be added if they suit your business."
+    },
+    {
+      "heading": "Online store",
+      "text": "Product pages, a cart and secure checkout, with local pickup, delivery or shipping options. I'll show you how to add products and manage orders yourself."
+    },
+    {
+      "heading": "Pricing",
+      "text": "Every booking or store project is a little different, so the price starts from $1,499 and you get a fixed quote once we've talked through what you need."
+    }
+  ],
+  "screenshots": []
+}

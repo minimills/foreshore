@@ -43,6 +43,59 @@ content:
       - { name: tags, label: Tags, type: string, list: true }
       - { name: featured, label: Featured (shown large at the top of Recent work), type: boolean }
       - { name: order, label: Order (1 shows first), type: number }
+      - name: hasPage
+        label: Has its own page
+        type: boolean
+        description: "Tick to give this project its own page at /work/<file name>, using the Details below."
+      - name: details
+        label: Details (for its own page)
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{heading}"
+        fields:
+          - { name: heading, label: Heading, type: string }
+          - { name: text, label: Text, type: text, description: Leave an empty line between paragraphs. }
+
+  - name: packages
+    label: Packages
+    type: collection
+    path: content/packages
+    format: json
+    filename: "{primary}.json"
+    view:
+      fields: [name, price, order]
+      primary: name
+      sort: [order, name]
+      default:
+        sort: order
+        order: asc
+    fields:
+      - { name: name, label: Package name, type: string, required: true }
+      - { name: price, label: Price (e.g. $999 or from $1,499), type: string }
+      - { name: description, label: Short description (pricing list), type: text }
+      - { name: features, label: "What's included", type: string, list: true }
+      - { name: timeline, label: Timeline, type: string }
+      - { name: mostPopular, label: Most popular, type: boolean }
+      - { name: order, label: Order (1 shows first), type: number }
+      - { name: pageIntro, label: Page intro (top of its own page), type: text }
+      - { name: whoItsFor, label: "Who it's for", type: text }
+      - name: details
+        label: More details
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{heading}"
+        fields:
+          - { name: heading, label: Heading, type: string }
+          - { name: text, label: Text, type: text, description: Leave an empty line between paragraphs. }
+      - name: screenshots
+        label: Example screenshots
+        type: image
+        options:
+          multiple: true
 
   # ---------------------------------------------------------------- Pages
   - name: site
@@ -122,6 +175,10 @@ content:
     fields:
       - { name: heading, label: Heading, type: string }
       - { name: note, label: Note under the projects, type: text }
+      - { name: allWorkLink, label: '"See all work" link text', type: string }
+      - { name: pageHeading, label: Work page heading, type: string }
+      - { name: pageIntro, label: Work page intro, type: text }
+      - { name: featuredButtonPage, label: Featured button (has its own page), type: string }
       - { name: featuredButtonLive, label: Featured button (live site), type: string }
       - { name: featuredButtonDemo, label: Featured button (demo), type: string }
       - { name: featuredButtonOther, label: Featured button (no link), type: string }
@@ -133,6 +190,24 @@ content:
           - { name: title, type: string }
           - { name: label, label: Badge, type: string }
           - { name: text, type: string }
+      - { name: projectBackLink, label: Project page back link, type: string }
+      - { name: screenshotsHeading, label: Project page screenshots heading, type: string }
+      - { name: projectCtaHeading, label: Project page closing question, type: string }
+      - { name: projectCtaButton, label: Project page closing button, type: string }
+      - { name: liveButton, label: Project page live site button, type: string }
+      - { name: demoButton, label: Project page demo button, type: string }
+
+  - name: packagePage
+    label: Package pages (shared text)
+    type: file
+    path: content/package-page.json
+    format: json
+    fields:
+      - { name: includedHeading, label: "\"What's included\" heading", type: string }
+      - { name: whoItsForHeading, label: "\"Who it's for\" heading", type: string }
+      - { name: screenshotsHeading, label: Screenshots heading, type: string }
+      - { name: buttonText, label: Button text, type: string }
+      - { name: backLink, label: Back link text, type: string }
 
   - name: pricing
     label: Pricing
@@ -144,20 +219,6 @@ content:
       - { name: intro, label: Intro text, type: text }
       - { name: buttonText, label: Button text, type: string }
       - { name: popularLabel, label: '"Most popular" badge text', type: string }
-      - name: packages
-        label: Packages
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{name}: {price}"
-        fields:
-          - { name: name, label: Name, type: string }
-          - { name: price, label: Price (e.g. $999 or from $1,499), type: string }
-          - { name: description, label: Description, type: text }
-          - { name: features, label: Features, type: string, list: true }
-          - { name: timeline, label: Timeline, type: string }
-          - { name: mostPopular, label: Most popular, type: boolean }
       - { name: carePlansHeading, label: Care plans heading, type: string }
       - name: carePlans
         label: Care plans
@@ -234,7 +295,7 @@ content:
       - { name: businessLabel, label: Business field label, type: string }
       - { name: projectTypeQuestion, label: Project type question, type: string }
       - { name: projectTypeOptions, label: Project type choices, type: string, list: true }
-      - { name: packageQuestion, label: Package question, type: string, description: The package choices come from Pricing. }
+      - { name: packageQuestion, label: Package question, type: string, description: The package choices come from Packages. }
       - { name: packagePlaceholder, label: Package placeholder, type: string }
       - { name: notSureOption, label: '"Not sure" choice', type: string }
       - { name: goalQuestion, label: Goal question, type: string }

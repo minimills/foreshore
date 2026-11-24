@@ -4,10 +4,33 @@
   "status": "Demo",
   "summary": "A web app for a manufacturing business that keeps the shop floor organized: track order payments and deadlines, chat with the team, log timesheets and pull simple reports.",
   "cover": "/images/shop-floor-cover.svg",
-  "screenshots": ["/images/shop-floor-screenshot-1.svg"],
+  "screenshots": [
+    "/images/shop-floor-screenshot-1.svg"
+  ],
   "liveUrl": "",
   "demoUrl": "",
-  "tags": ["Web app", "Manufacturing", "Orders", "Timesheets", "Reports"],
+  "tags": [
+    "Web app",
+    "Manufacturing",
+    "Orders",
+    "Timesheets",
+    "Reports"
+  ],
   "featured": true,
-  "order": 1
+  "order": 1,
+  "hasPage": true,
+  "details": [
+    {
+      "heading": "The problem",
+      "text": "A small manufacturing business was tracking orders, payments and deadlines across spreadsheets, sticky notes and text messages. Things slipped through the cracks, and nobody had a clear picture of the week ahead."
+    },
+    {
+      "heading": "What the app does",
+      "text": "Orders: see every job, its deadline and whether it's paid, has a deposit or is still unpaid.\n\nTeam chat: talk about jobs in one place instead of scattered texts.\n\nTimesheets: the team logs hours against each job.\n\nReports: simple weekly summaries of output, hours and money owed."
+    },
+    {
+      "heading": "The result",
+      "text": "DRAFT: describe the outcome here, for example how much time it saves each week or what the team says about it."
+    }
+  ]
 }

@@ -5,30 +5,15 @@
  */
 import fs from "node:fs";
 import path from "node:path";
+import type { Project, Section } from "./format";
+
+export { img, paragraphs, projectHref } from "./format";
+export type { Project, Section } from "./format";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
 function read<T>(file: string): T {
   return JSON.parse(fs.readFileSync(path.join(CONTENT_DIR, file), "utf8")) as T;
-}
-
-/**
- * Turns an image value from the content files into a usable address.
- * Accepts a plain file name ("logo.png", looked up in public/images),
- * a site path ("/images/logo.png", what Pages CMS writes) or a full URL.
- */
-export function img(value?: string): string {
-  if (!value) return "";
-  if (value.startsWith("/") || /^https?:\/\//.test(value)) return value;
-  return `/images/${value}`;
-}
-
-/** Splits a block of text on blank lines, so one field can hold several paragraphs. */
-export function paragraphs(text?: string): string[] {
-  return (text ?? "")
-    .split(/\n\s*\n/)
-    .map((p) => p.trim())
-    .filter(Boolean);
 }
 
 export type Link = { label: string; link: string };
@@ -69,34 +54,35 @@ export type Hero = {
 export type Work = {
   heading: string;
   note: string;
+  allWorkLink: string;
+  pageHeading: string;
+  pageIntro: string;
+  featuredButtonPage: string;
   featuredButtonLive: string;
   featuredButtonDemo: string;
   featuredButtonOther: string;
   inviteTile: { show: boolean; title: string; label: string; text: string };
-};
-
-export type Project = {
-  slug: string;
-  title: string;
-  type: string;
-  status: string;
-  summary: string;
-  cover: string;
-  screenshots: string[];
-  liveUrl: string;
-  demoUrl: string;
-  tags: string[];
-  featured: boolean;
-  order: number;
+  projectBackLink: string;
+  screenshotsHeading: string;
+  projectCtaHeading: string;
+  projectCtaButton: string;
+  liveButton: string;
+  demoButton: string;
 };
 
 export type Package = {
+  slug: string;
   name: string;
   price: string;
   description: string;
   features: string[];
   timeline: string;
   mostPopular: boolean;
+  order: number;
+  pageIntro: string;
+  whoItsFor: string;
+  details: Section[];
+  screenshots: string[];
 };
 
 export type CarePlan = {
@@ -112,7 +98,6 @@ export type Pricing = {
   intro: string;
   buttonText: string;
   popularLabel: string;
-  packages: Package[];
   carePlansHeading: string;
   carePlans: CarePlan[];
   notes: string[];
@@ -154,7 +139,15 @@ export type Legal = {
   title: string;
   lastUpdated: string;
   intro: string;
-  sections: { heading: string; text: string }[];
+  sections: Section[];
+};
+
+export type PackagePage = {
+  includedHeading: string;
+  whoItsForHeading: string;
+  screenshotsHeading: string;
+  buttonText: string;
+  backLink: string;
 };
 
 export const getSite = () => read<Site>("site.json");
@@ -165,30 +158,58 @@ export const getProcess = () => read<Process>("process.json");
 export const getAbout = () => read<About>("about.json");
 export const getFaq = () => read<Faq>("faq.json");
 export const getContact = () => read<Contact>("contact.json");
+export const getPackagePage = () => read<PackagePage>("package-page.json");
 export const getLegal = (page: "privacy" | "terms") => read<Legal>(`legal/${page}.json`);
+
+/** Reads every .json file in a content folder. The file name becomes the page address (slug). */
+function readFolder<T>(folder: string): (Partial<T> & { slug: string })[] {
+  return fs
+    .readdirSync(path.join(CONTENT_DIR, folder))
+    .filter((f) => f.endsWith(".json"))
+    .map((f) => ({ ...read<Partial<T>>(`${folder}/${f}`), slug: f.replace(/\.json$/, "") }));
+}
+
+const byOrder = (a: { order: number; title?: string; name?: string }, b: typeof a) =>
+  a.order - b.order || (a.title ?? a.name ?? "").localeCompare(b.title ?? b.name ?? "");
 
 /** All showcase projects, one JSON file each in content/showcase, sorted by `order`. */
 export function getProjects(): Project[] {
-  const dir = path.join(CONTENT_DIR, "showcase");
-  return fs
-    .readdirSync(dir)
-    .filter((f) => f.endsWith(".json"))
-    .map((f) => {
-      const data = read<Partial<Project>>(`showcase/${f}`);
-      return {
-        slug: f.replace(/\.json$/, ""),
-        title: data.title ?? "",
-        type: data.type ?? "",
-        status: data.status ?? "",
-        summary: data.summary ?? "",
-        cover: data.cover ?? "",
-        screenshots: data.screenshots ?? [],
-        liveUrl: data.liveUrl ?? "",
-        demoUrl: data.demoUrl ?? "",
-        tags: data.tags ?? [],
-        featured: Boolean(data.featured),
-        order: Number(data.order ?? 999),
-      };
-    })
-    .sort((a, b) => a.order - b.order || a.title.localeCompare(b.title));
+  return readFolder<Project>("showcase")
+    .map((d) => ({
+      slug: d.slug,
+      title: d.title ?? "",
+      type: d.type ?? "",
+      status: d.status ?? "",
+      summary: d.summary ?? "",
+      cover: d.cover ?? "",
+      screenshots: d.screenshots ?? [],
+      liveUrl: d.liveUrl ?? "",
+      demoUrl: d.demoUrl ?? "",
+      tags: d.tags ?? [],
+      featured: Boolean(d.featured),
+      order: Number(d.order ?? 999),
+      hasPage: Boolean(d.hasPage),
+      details: d.details ?? [],
+    }))
+    .sort(byOrder);
+}
+
+/** All website packages, one JSON file each in content/packages, sorted by `order`. */
+export function getPackages(): Package[] {
+  return readFolder<Package>("packages")
+    .map((d) => ({
+      slug: d.slug,
+      name: d.name ?? "",
+      price: d.price ?? "",
+      description: d.description ?? "",
+      features: d.features ?? [],
+      timeline: d.timeline ?? "",
+      mostPopular: Boolean(d.mostPopular),
+      order: Number(d.order ?? 999),
+      pageIntro: d.pageIntro ?? "",
+      whoItsFor: d.whoItsFor ?? "",
+      details: d.details ?? [],
+      screenshots: d.screenshots ?? [],
+    }))
+    .sort(byOrder);
 }

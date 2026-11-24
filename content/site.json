@@ -10,17 +10,48 @@
   "socials": [],
   "mainButton": "Start your project",
   "navLinks": [
-    { "label": "Work", "link": "/#work" },
-    { "label": "Pricing", "link": "/#pricing" },
-    { "label": "How it works", "link": "/#process" },
-    { "label": "About", "link": "/#about" }
+    {
+      "label": "Work",
+      "link": "/work"
+    },
+    {
+      "label": "Pricing",
+      "link": "/#pricing"
+    },
+    {
+      "label": "How it works",
+      "link": "/#process"
+    },
+    {
+      "label": "About",
+      "link": "/#about"
+    }
   ],
   "footerLinks": [
-    { "label": "Pricing", "link": "/#pricing" },
-    { "label": "How it works", "link": "/#process" },
-    { "label": "Questions", "link": "/#faq" },
-    { "label": "Privacy", "link": "/privacy" },
-    { "label": "Terms", "link": "/terms" }
+    {
+      "label": "Work",
+      "link": "/work"
+    },
+    {
+      "label": "Pricing",
+      "link": "/#pricing"
+    },
+    {
+      "label": "How it works",
+      "link": "/#process"
+    },
+    {
+      "label": "Questions",
+      "link": "/#faq"
+    },
+    {
+      "label": "Privacy",
+      "link": "/privacy"
+    },
+    {
+      "label": "Terms",
+      "link": "/terms"
+    }
   ],
   "seo": {
     "title": "Web Design for Small Businesses in PEI | Foreshore Studio",

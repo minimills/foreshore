@@ -1,8 +1,9 @@
 import Link from "next/link";
-import { getPricing } from "@/lib/content";
+import { getPackages, getPricing } from "@/lib/content";
 
 export default function Pricing() {
   const pricing = getPricing();
+  const packages = getPackages();
   return (
     <section id="pricing" className="pricing pad">
       <div className="pricing-intro" data-reveal="">
@@ -23,8 +24,8 @@ export default function Pricing() {
       </div>
 
       <div className="pricing-list s2" data-reveal="">
-        {pricing.packages.map((p) => (
-          <div className="row" key={p.name}>
+        {packages.map((p) => (
+          <Link className="row svc-row" href={`/packages/${p.slug}`} key={p.slug}>
             <div>
               <div className="row-name">
                 {p.name}
@@ -40,8 +41,14 @@ export default function Pricing() {
               )}
               {p.timeline && <div className="row-time">{p.timeline}</div>}
             </div>
-            <div className="row-price">{p.price}</div>
-          </div>
+            <div className="row-price">
+              {p.price}
+              <span className="arr" aria-hidden="true">
+                {" "}
+                →
+              </span>
+            </div>
+          </Link>
         ))}
 
         {pricing.carePlans.length > 0 && (

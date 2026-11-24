@@ -1,4 +1,4 @@
-import { getContact, getPricing, getSite } from "@/lib/content";
+import { getContact, getPackages, getSite } from "@/lib/content";
 
 /*
  * The enquiry form sends through Web3Forms (web3forms.com, free) once an
@@ -7,7 +7,7 @@ import { getContact, getPricing, getSite } from "@/lib/content";
 export default function Contact() {
   const contact = getContact();
   const site = getSite();
-  const packages = getPricing().packages;
+  const packages = getPackages();
   const key = contact.formAccessKey.trim();
 
   return (

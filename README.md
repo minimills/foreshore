@@ -17,12 +17,14 @@ Then open http://localhost:3000. For a production build: `npm run build && npm r
 
 ```
 content/                 all editable text (JSON), one file per section
-content/showcase/        one file per showcase project
+content/showcase/        one file per showcase project (pages at /work/<name>)
+content/packages/        one file per package (pages at /packages/<name>)
 content/legal/           privacy policy and terms
 public/images/           all images, referenced as /images/<file name>
 .pages.yml               Pages CMS settings (the browser editing forms)
 src/lib/content.ts       reads the content files
-src/app/                 pages (home, /privacy, /terms), layout and styles
+src/app/                 pages (home, /work, /work/[slug], /packages/[slug],
+                         /privacy, /terms), layout and styles
 src/components/site/     the page sections (Hero, Work, Pricing, ...)
 src/fonts/               Inter, Sora and Anton (open-source fonts)
 ```

@@ -7,7 +7,12 @@
   "screenshots": [],
   "liveUrl": "",
   "demoUrl": "",
-  "tags": ["Retail", "Local"],
+  "tags": [
+    "Retail",
+    "Local"
+  ],
   "featured": false,
-  "order": 3
+  "order": 3,
+  "hasPage": false,
+  "details": []
 }
