@@ -38,6 +38,7 @@ content:
         description: The first one fades in when people hover over the project.
         options:
           multiple: true
+      - { name: mobileScreenshot, label: Phone screenshot, type: image, description: "Tall phone screenshot shown in the phone mockup, about 390 x 780. Leave empty for a grey sketch." }
       - { name: liveUrl, label: Live website link, type: string, description: "Full address, e.g. https://example.ca" }
       - { name: demoUrl, label: Demo link, type: string }
       - { name: tags, label: Tags, type: string, list: true }

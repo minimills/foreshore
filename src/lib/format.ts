@@ -31,6 +31,8 @@ export type Project = {
   summary: string;
   cover: string;
   screenshots: string[];
+  /** Tall phone screenshot shown in the phone mockup on the featured project. */
+  mobileScreenshot: string;
   liveUrl: string;
   demoUrl: string;
   tags: string[];

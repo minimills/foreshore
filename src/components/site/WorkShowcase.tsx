@@ -3,7 +3,7 @@ import { useRef, useState } from "react";
 import Link from "next/link";
 import TilesMarquee from "./TilesMarquee";
 import ProjectTile, { ProjectScreen, SkeletonUi, Tile } from "./ProjectTile";
-import { projectHref, type Project } from "@/lib/format";
+import { img, projectHref, type Project } from "@/lib/format";
 import type { Work } from "@/lib/content";
 
 function featuredButton(p: Project, work: Work) {
@@ -78,12 +78,19 @@ export default function WorkShowcase({ projects, work }: { projects: Project[]; 
               <ProjectScreen project={project} />
             </div>
             <div className="phone">
-              <div className="phone-screen">
-                <div className="l" style={{ width: "50%" }} />
-                <div className="img" />
-                <div className="l" />
-                <div className="l" style={{ width: "70%" }} />
-              </div>
+              {project.mobileScreenshot ? (
+                <div className="phone-screen phone-screen-img">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img src={img(project.mobileScreenshot)} alt="" loading="lazy" />
+                </div>
+              ) : (
+                <div className="phone-screen">
+                  <div className="l" style={{ width: "50%" }} />
+                  <div className="img" />
+                  <div className="l" />
+                  <div className="l" style={{ width: "70%" }} />
+                </div>
+              )}
             </div>
           </div>
 

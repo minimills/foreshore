@@ -1,0 +1,28 @@
+{
+    "name": "Get You Online",
+    "price": "$199",
+    "description": "A fast, simple starter site built from a clean template to get your business name, services, and contact info live right away.",
+    "features": [
+      "Ready-made kits",
+      "Basic HTML/CSS site",
+      "Your text, photos, and contact info added",
+      "Basic domain & launch setup"
+    ],
+    "timeline": "About 1 week",
+    "mostPopular": false,
+    "order": 1,
+    "pageIntro": "Getting online doesn't have to be complicated or expensive. Using a clean, ready-made template, I'll set up a simple starter site with the essentials every new business needs: who you are, what you do, and how people can reach you.",
+    "whoItsFor": "Brand-new businesses, side hustles, and solo operators who just need a clean, credible home on the web right away—without spending a lot of time or money upfront.",
+    "details": [
+      {
+        "heading": "What's on the page",
+        "text": "A clear headline and intro, a brief overview of what you offer, a short about blurb, and your contact details or opening hours. All arranged in a clean, ready-made layout that fits your business."
+      },
+      {
+        "heading": "How it works",
+        "text": "Send over your logo, photos, and basic business details. I'll plug everything into a clean template\n\nYou'll usually be online in about a 2-3 days."
+      }
+    ],
+    "screenshots": []
+  }
+  
