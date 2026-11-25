@@ -600,24 +600,40 @@ html[data-skin="foreshore"] .enquiry :is(input, textarea)::placeholder { color: 
   .menu-toggle { display: grid; }
   .menu-panel.is-open { display: flex; }
   .footer-links a, .cta-note a { align-items: center; min-height: 44px; display: inline-flex; }
-  html[data-skin] .hero h1 { font-size: 1.75rem; }
-  html[data-skin] .hero .h1-b { font-size: 2rem; }
-  .hero-body { padding-top: 28px; }
-  .hero-sub { font-size: 1rem; }
-  .hero-actions { width: 100%; }
+  /* Phones: one clear message, one primary action, then the photo and a single trust card. */
+  .hero-body { padding-top: 36px; }
+  .eyebrow { font-size: 0.75rem; margin-bottom: 14px; }
+  html[data-skin] .hero h1 { font-size: 1.375rem; line-height: 1.1; }
+  html[data-skin] .hero .h1-b { font-size: 2.5rem; line-height: 1; margin-top: 6px; text-wrap: balance; }
+  .hero-sub { font-size: 1rem; max-width: 34ch; margin-top: 18px; text-wrap: pretty; }
+  .hero-actions { width: 100%; gap: 4px; margin-top: 28px; }
   .hero-actions .btn { flex: 100%; }
-  .spark:first-child { top: 20% !important; left: 5% !important; }
-  .spark:nth-child(3) { top: 15% !important; right: 5% !important; }
-  /* Phones: the scene sits behind the heading and buttons instead of below the cards. */
-  .hero-scene { top: 0; bottom: auto; height: min(170vw, 720px); }
+  html[data-skin] .hero-actions .btn-outline {
+    border: 0; background: none; min-height: 44px;
+    text-decoration: underline; text-underline-offset: 4px; text-decoration-thickness: 1.5px;
+  }
+  .spark { display: none; }
+  /* The scene becomes a framed photo below the buttons, so nothing sits behind the text. */
+  .hero-scene {
+    position: relative; inset: auto; height: min(72vw, 300px);
+    margin: 28px 20px 0; border-radius: 20px;
+    box-shadow: 0 18px 40px -18px #2630198c;
+  }
   html[data-skin] .hero-scene {
     background-image: var(--scene-mobile);
-    opacity: 0.5;
-    mask-image: linear-gradient(#0000 0%, #000 22%, #000 72%, #0000 100%);
+    background-position: center 55%;
+    opacity: 1; mask-image: none;
   }
-  .hero-cards { flex-direction: column; gap: 12px; height: auto; margin-top: 32px; padding-bottom: 48px; display: flex; }
-  .card-timeline, .card-intro, .promises { width: auto; position: static; transform: none; }
-  .promises { white-space: normal; grid-template-columns: 1fr 1fr; gap: 8px 12px; padding: 12px 16px; display: grid; }
+  .hero-cards { flex-direction: column; gap: 16px; height: auto; margin-top: -40px; padding-bottom: 44px; display: flex; }
+  /* The full process section follows further down the page, so the mini timeline is desktop-only. */
+  .card-timeline { display: none; }
+  .card-intro, .promises { width: auto; position: static; transform: none; }
+  .card-intro { min-height: 0; margin: 0 12px; padding: 14px 16px; }
+  html[data-skin] .promises {
+    white-space: normal; grid-template-columns: 1fr 1fr; gap: 8px 12px; padding: 0 12px;
+    background: none; box-shadow: none; backdrop-filter: none; border-radius: 0;
+    font-size: 0.875rem; display: grid;
+  }
   .tiles-marquee { --tile-w: min(78vw, 320px); --tile-gap: 18px; }
   .steps { grid-template-columns: 1fr; }
   .about-person { flex-direction: column; align-items: flex-start; }
