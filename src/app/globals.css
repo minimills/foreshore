@@ -6,7 +6,7 @@
 /* ===========================================================================
    Foreshore Studio site styles.
    A light default palette lives on :root and is overridden per skin.
-   The site renders with data-skin="motel" (set in src/app/layout.tsx).
+   The site renders with data-skin="foreshore" (set in src/app/layout.tsx).
    The hero background images are set from content/hero.json.
    =========================================================================== */
 
@@ -30,28 +30,29 @@
   --font-display: var(--font-sora), var(--font-inter), sans-serif;
 }
 
-/* Motel skin: the dark palette the site renders with */
-html[data-skin="motel"] {
-  --bg: #2a2248;
-  --bg-2: #332a57;
-  --leaf-soft: #3f3468;
-  --line: #564a85;
-  --field-border: #a99bd6;
-  --ink: #fff3f8;
-  --ink-soft: #dcd3ee;
-  --muted-head: #ffb0cf;
-  --accent: #ff7ab8;
-  --accent-deep: #ffb9ab;
-  --forest: #6a3f8f;
-  --white: #312853;
-  --btn-bg: #f2b63c;
-  --btn-fg: #2a2248;
-  --on-accent: #2a2248;
-  --cta-2: #b8527f;
-  --error: #ffa59c;
-  --chip-hue: 215deg;
-  --tile-frame: linear-gradient(135deg, #6a5aa8, #ff7ab8 60%, #f2b63c);
-  color-scheme: dark;
+/* Foreshore skin: calm olive + cream palette the site renders with.
+   Source palette: #EBEBD8 cream, #9BA685 sage, #637545 olive, #455230 deep olive. */
+html[data-skin="foreshore"] {
+  --bg: #ebebd8;
+  --bg-2: #e2e3cc;
+  --leaf-soft: #dde1c8;
+  --line: #cdd2b6;
+  --field-border: #9ba685;
+  --ink: #262d19;
+  --ink-soft: #455230;
+  --muted-head: #637545;
+  --accent: #9ba685;
+  --accent-deep: #455230;
+  --forest: #455230;
+  --white: #f6f6ec;
+  --btn-bg: #112222;
+  --btn-fg: #f6f6ec;
+  --on-accent: #262d19;
+  --cta-2: #637545;
+  --error: #9b3a2a;
+  --chip-hue: 0deg;
+  --tile-frame: linear-gradient(135deg, #455230, #637545 55%, #9ba685);
+  color-scheme: light;
 }
 
 /* ---------- Base ---------- */
@@ -104,9 +105,6 @@ html[data-skin] :is(.hero h1, main h2, .cta h2, .featured-copy h3) {
   font-weight: 400;
   line-height: 1.08;
 }
-html[data-skin="motel"] :is(.hero h1, main h2, .cta h2) {
-  text-shadow: 0 0 18px #ff4fa380, 0 0 2px #ff4fa3d9;
-}
 
 /* ---------- Buttons & pills ---------- */
 .btn {
@@ -131,11 +129,11 @@ html[data-skin="motel"] :is(.hero h1, main h2, .cta h2) {
 html[data-skin] .btn-ink { background: var(--btn-bg); color: var(--btn-fg); }
 html[data-skin] .btn-ink:hover { color: var(--btn-fg); }
 html[data-skin] .btn .arr { color: var(--on-accent); }
-html[data-skin="motel"] .btn .arr { background: var(--bg); color: var(--btn-bg); }
-html[data-skin="motel"] .btn-outline { border-color: var(--accent-deep); background: none; }
-html[data-skin="motel"] .btn-outline:hover { border-color: var(--ink); }
-html[data-skin="motel"] .btn-ink { box-shadow: 0 0 22px -6px #ffc53de6; }
-html[data-skin="motel"] a:hover { color: var(--accent-deep); }
+html[data-skin="foreshore"] .btn .arr { background: var(--accent); color: var(--on-accent); }
+html[data-skin="foreshore"] .btn-outline { border-color: var(--accent-deep); background: none; }
+html[data-skin="foreshore"] .btn-outline:hover { border-color: var(--ink); }
+html[data-skin="foreshore"] .btn-ink:hover { box-shadow: 0 12px 24px -12px #26301966; }
+html[data-skin="foreshore"] a:hover { color: var(--accent-deep); }
 
 .pill {
   border-radius: 999px; align-items: center;
@@ -160,17 +158,35 @@ html[data-skin] .pill-offer { color: var(--on-accent); }
   font-size: 1.125rem; font-weight: 700; text-decoration: none; display: inline-flex;
 }
 .brand:hover { color: var(--ink); }
-.brand-text { align-items: baseline; gap: 8px; display: inline-flex; }
 .brand-mark { flex: none; margin-right: -2px; }
-.brand-label { color: var(--accent-deep); letter-spacing: 0; font-size: 0.875rem; font-weight: 600; }
 .nav-links { flex-wrap: wrap; gap: 32px; font-size: 0.9375rem; font-weight: 500; display: flex; }
 .nav-links a { color: var(--ink-soft); text-decoration: none; }
 .nav-links a:hover { color: var(--ink); text-underline-offset: 4px; text-decoration: underline; }
-html[data-skin="motel"] :is(.nav-links a:hover, .brand:hover) { color: var(--ink); }
+html[data-skin="foreshore"] :is(.nav-links a:hover, .brand:hover) { color: var(--ink); }
 html[data-skin] .brand-mark > rect:first-of-type { fill: var(--accent); }
 html[data-skin] .brand-mark > rect:nth-of-type(2),
 html[data-skin] .brand-mark > g:first-of-type { fill: var(--white); }
-html[data-skin] .brand-mark > g:last-of-type { stroke: var(--btn-bg); }
+html[data-skin] .brand-mark > g:last-of-type { stroke: var(--accent-deep); }
+
+/* Mobile menu: hamburger button + dropdown, shown only on small screens */
+.menu-toggle, .menu-panel { display: none; }
+.menu-toggle {
+  color: var(--ink); background: var(--white); border: 1px solid var(--line); border-radius: 12px;
+  place-items: center; width: 44px; height: 44px; padding: 0; cursor: pointer;
+}
+.menu-toggle svg { display: block; }
+.menu-panel {
+  z-index: 10; background: var(--white); border: 1px solid var(--line); border-radius: 16px;
+  flex-direction: column; gap: 4px; padding: 12px;
+  position: absolute; top: calc(100% - 12px); left: 20px; right: 20px;
+  box-shadow: 0 24px 48px -20px #2630194d;
+}
+.menu-panel a:not(.btn) {
+  color: var(--ink); border-radius: 10px; align-items: center; min-height: 48px; padding: 0 12px;
+  font-size: 1rem; font-weight: 500; text-decoration: none; display: flex;
+}
+.menu-panel a:not(.btn):hover { background: var(--leaf-soft); color: var(--ink); }
+.menu-panel .btn { margin-top: 8px; }
 
 /* ---------- Hero ---------- */
 .hero {
@@ -187,8 +203,8 @@ html[data-skin] .brand-mark > g:last-of-type { stroke: var(--btn-bg); }
   position: absolute; inset: 0;
   mask-image: radial-gradient(70% 95% at 50% 30%, #000 45%, #0000 100%);
 }
-html[data-skin="motel"] .hero-grid { display: none; }
-html[data-skin="motel"] .hero { background: linear-gradient(180deg, var(--bg) 0%, #614d98 100%); }
+html[data-skin="foreshore"] .hero-grid { display: none; }
+html[data-skin="foreshore"] .hero { background: linear-gradient(180deg, var(--bg) 0%, #dcdec4 100%); }
 
 .hero-marks { z-index: 2; pointer-events: none; position: absolute; inset: 0; }
 .spark { color: var(--accent-deep); font-size: 0.8125rem; font-weight: 400; position: absolute; }
@@ -210,16 +226,18 @@ html[data-skin] .chip { filter: hue-rotate(var(--chip-hue, 0deg)) drop-shadow(0 
   color: var(--accent-deep); margin-bottom: 18px;
   font-size: 0.875rem; font-weight: 600; line-height: 1.4; display: block;
 }
-.hero h1 {
+.hero :is(h1, .h1-b) {
   font-family: var(--font-body); letter-spacing: -0.035em;
   font-size: clamp(2.25rem, 5.2vw, 4rem); font-weight: 600; line-height: 1.04;
 }
 .hero h1 span { display: block; }
-html[data-skin] .hero h1 { font-size: clamp(2.5rem, 6vw, 4.75rem); }
+/* headingLine1 (h1) sits slightly smaller than headingLine2 (h2) */
+html[data-skin] .hero h1 { font-size: clamp(1.75rem, 4.25vw, 3.25rem); }
+html[data-skin] .hero .h1-b { font-size: clamp(2rem, 5vw, 3.75rem); }
 .h1-a { color: var(--muted-head); }
 .h1-b { color: var(--ink); }
-html[data-skin="motel"] .hero h1 .h1-a { color: #5fe3e0; text-shadow: 0 0 18px #5fe3e080; }
-.hero-sub { max-width: 540px; color: var(--ink-soft); margin-top: 18px; font-size: 1.125rem; line-height: 1.55; }
+html[data-skin="foreshore"] .hero h1 .h1-a { color: var(--muted-head); }
+.hero-sub { max-width: 540px; color: var(--ink-soft); margin-top: 18px; font-size: 1rem; line-height: 1.55; }
 .hero-actions { flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 28px; display: flex; }
 
 .hero-scene { z-index: 1; height: 30vw; position: absolute; bottom: 0; left: 0; right: 0; overflow: hidden; }
@@ -239,7 +257,7 @@ html[data-skin] .hero-scene {
   box-shadow: 0 18px 40px -12px #14280a33, 0 0 0 1px #0000000d;
 }
 html[data-skin] .card { background: color-mix(in srgb, var(--white) 92%, transparent); }
-html[data-skin="motel"] .card { box-shadow: 0 18px 40px -12px #0009, 0 0 0 1px var(--line); }
+html[data-skin="foreshore"] .card { box-shadow: 0 18px 40px -16px #2630194d, 0 0 0 1px var(--line); }
 .card-title { letter-spacing: -0.01em; font-size: 1rem; font-weight: 600; }
 .card-body { color: var(--ink-soft); margin-top: 2px; line-height: 1.4; }
 .card-timeline { width: 290px; padding: 16px 18px; position: absolute; bottom: 90px; left: 7%; }
@@ -284,7 +302,7 @@ html[data-skin="motel"] .card { box-shadow: 0 18px 40px -12px #0009, 0 0 0 1px v
   grid-template-columns: 1.15fr 1fr; align-items: center; gap: 48px;
   padding: 48px 56px; text-decoration: none; display: grid; position: relative;
 }
-html[data-skin="motel"] .featured { box-shadow: 0 0 0 1px var(--line); }
+html[data-skin="foreshore"] .featured { box-shadow: 0 0 0 1px var(--line); }
 .featured-stage { height: 420px; position: relative; }
 .shot { background: linear-gradient(135deg, var(--accent-deep) 0%, var(--accent) 100%); border-radius: 16px; position: relative; overflow: hidden; }
 .shot .ui {
@@ -308,12 +326,17 @@ html[data-skin="motel"] .featured { box-shadow: 0 0 0 1px var(--line); }
   transition: transform 1s cubic-bezier(0.2, 0.8, 0.2, 1) 0.25s, opacity 0.5s 0.25s;
   position: absolute; bottom: -20px; right: -40px; box-shadow: 0 30px 50px -20px #11222280;
 }
-html[data-skin="motel"] .phone { background: #05080e; }
+html[data-skin="foreshore"] .phone { background: #262d19; }
 :where(.reveal-on) .phone { opacity: 0; transform: translateY(80px); }
 .featured.in .phone { opacity: 1; transform: translateY(0); }
 .featured:hover .phone { transform: translateY(-10px); }
 .featured:hover .btn-ink { transform: translateY(-2px); box-shadow: 0 12px 24px -12px #1229; }
 .phone-screen { background: #fff; border-radius: 14px; flex-direction: column; gap: 8px; height: 100%; padding: 12px; display: flex; }
+/* With a real screenshot the phone takes the image's shape: full width, no side cropping.
+   Very tall screenshots are capped and cropped at the bottom. */
+.phone:has(.phone-screen-img) { height: auto; }
+.phone-screen-img { padding: 0; overflow: hidden; height: auto; max-height: 280px; }
+.phone-screen-img img { width: 100%; height: auto; }
 .phone-screen .l { background: var(--line); border-radius: 4px; height: 8px; }
 .phone-screen .img { background: linear-gradient(135deg, var(--accent-deep), var(--accent)); border-radius: 8px; height: 70px; }
 .featured-copy { flex-direction: column; gap: 20px; display: flex; }
@@ -339,7 +362,7 @@ html[data-skin="motel"] .phone { background: #05080e; }
   background: #ffffffe6; border: 0; border-radius: 50%; place-items: center; display: grid;
   position: absolute; top: 142px; transform: translateY(-50%); box-shadow: 0 8px 20px -8px #11222273;
 }
-html[data-skin="motel"] :is(.tiles-arrow, .tiles-arrow:hover) { background: var(--white); }
+html[data-skin="foreshore"] :is(.tiles-arrow, .tiles-arrow:hover) { background: var(--white); }
 .tiles-prev { left: 14px; }
 .tiles-next { right: 14px; }
 .tiles-pause { top: 42px; right: 14px; }
@@ -355,7 +378,7 @@ html[data-skin="motel"] :is(.tiles-arrow, .tiles-arrow:hover) { background: var(
 .tile-btn { font: inherit; text-align: left; cursor: pointer; background: none; border: 0; padding: 0; }
 .tile.is-active .shot { box-shadow: 0 0 0 3px var(--btn-bg, var(--accent-deep)); }
 .tile .shot { height: 260px; }
-html[data-skin="motel"] .shot { background: linear-gradient(135deg, #6a5aa8 0%, #ff7ab8 60%, #f2b63c 100%); }
+html[data-skin="foreshore"] .shot { background: var(--tile-frame); }
 html[data-skin] .tile .shot { background: var(--tile-frame) !important; }
 .tile .ui { transition: transform 0.6s var(--ease); }
 .tile:hover .ui { transform: translateY(-34px); }
@@ -418,7 +441,6 @@ html[data-skin] .tile .shot { background: var(--tile-frame) !important; }
   font-size: 0.9375rem; font-weight: 700;
   transition: transform 0.5s cubic-bezier(0.3, 1.4, 0.4, 1), opacity 0.4s; display: flex;
 }
-html[data-skin="motel"] .step .n { box-shadow: 0 0 14px -4px var(--accent); }
 :where(.reveal-on) .step .n { opacity: 0; transform: scale(0.6); }
 .steps.in .n { opacity: 1; transform: scale(1); }
 .steps.in .step:nth-child(3) .n { transition-delay: 0.4s; }
@@ -475,7 +497,7 @@ html[data-skin] .cta-band { background: linear-gradient(160deg, var(--forest) 0%
   box-shadow: 0 24px 48px -24px #11222273;
 }
 html[data-skin] .enquiry { background: var(--white); }
-html[data-skin="motel"] .enquiry { box-shadow: 0 0 0 1px var(--line); }
+html[data-skin="foreshore"] .enquiry { box-shadow: 0 0 0 1px var(--line); }
 .enquiry .field-row { grid-template-columns: 1fr 1fr; gap: 18px; display: grid; }
 .enquiry .field { border: 0; flex-direction: column; gap: 6px; min-width: 0; margin: 0; padding: 0; display: flex; }
 .enquiry .field > span, .enquiry legend { margin-bottom: 6px; padding: 0; font-size: 0.875rem; font-weight: 600; }
@@ -485,7 +507,7 @@ html[data-skin="motel"] .enquiry { box-shadow: 0 0 0 1px var(--line); }
   width: 100%; padding: 12px 14px; font-size: 1rem;
 }
 .enquiry textarea { resize: vertical; min-height: 96px; }
-html[data-skin="motel"] .enquiry :is(input, textarea)::placeholder { color: var(--ink-soft); }
+html[data-skin="foreshore"] .enquiry :is(input, textarea)::placeholder { color: var(--ink-soft); }
 .enquiry input:focus-visible, .enquiry select:focus-visible, .enquiry textarea:focus-visible {
   outline: 2px solid var(--accent-deep); outline-offset: 1px; border-color: var(--accent-deep);
 }
@@ -561,6 +583,7 @@ html[data-skin="motel"] .enquiry :is(input, textarea)::placeholder { color: var(
   .featured-stage { height: 360px; overflow: hidden; }
   .laptop { width: 100%; height: 320px; top: 0; left: 0; }
   .phone { width: 110px; height: 220px; bottom: 0; right: 8px; }
+  .phone-screen-img { max-height: 200px; }
   .pricing { grid-template-columns: 1fr; gap: 40px; padding-top: 110px; }
   .steps { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .line { display: none; }
@@ -572,10 +595,13 @@ html[data-skin="motel"] .enquiry :is(input, textarea)::placeholder { color: var(
   .enquiry .field-row { grid-template-columns: 1fr; }
   .pad { padding-left: 20px; padding-right: 20px; }
   .hero { min-height: 0; }
-  .nav { row-gap: 12px; }
-  .nav-links { order: 3; justify-content: space-between; gap: 12px; width: 100%; font-size: 0.875rem; }
-  .nav-links a, .footer-links a, .cta-note a { align-items: center; min-height: 44px; display: inline-flex; }
-  .hero h1 { font-size: 2rem; }
+  .nav { flex-wrap: nowrap; }
+  .nav-links { display: none; }
+  .menu-toggle { display: grid; }
+  .menu-panel.is-open { display: flex; }
+  .footer-links a, .cta-note a { align-items: center; min-height: 44px; display: inline-flex; }
+  html[data-skin] .hero h1 { font-size: 1.75rem; }
+  html[data-skin] .hero .h1-b { font-size: 2rem; }
   .hero-body { padding-top: 28px; }
   .hero-sub { font-size: 1rem; }
   .hero-actions { width: 100%; }

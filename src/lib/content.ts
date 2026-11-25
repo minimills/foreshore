@@ -183,6 +183,7 @@ export function getProjects(): Project[] {
       summary: d.summary ?? "",
       cover: d.cover ?? "",
       screenshots: d.screenshots ?? [],
+      mobileScreenshot: d.mobileScreenshot ?? "",
       liveUrl: d.liveUrl ?? "",
       demoUrl: d.demoUrl ?? "",
       tags: d.tags ?? [],

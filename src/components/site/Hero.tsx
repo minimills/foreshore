@@ -52,8 +52,8 @@ export default function Hero() {
         <h1>
           <span className="eyebrow load l2">{hero.eyebrow}</span>{" "}
           <span className="h1-a load l2">{hero.headingLine1}</span>{" "}
-          <span className="h1-b load l3">{hero.headingLine2}</span>
         </h1>
+        <h2 className="h1-b load l3">{hero.headingLine2}</h2>
         <p className="hero-sub load l4">{hero.subheading}</p>
         <div className="hero-actions load l5">
           <Link href="/#contact" className="btn btn-ink">

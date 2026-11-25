@@ -53,6 +53,7 @@ The five step names in the little "Online in 5 steps" card come from **How it wo
    - **Short description**: one or two sentences.
    - **Cover image**: a wide screenshot, about 1200 × 800 pixels. Leave it empty and a simple grey sketch is shown instead.
    - **Extra screenshots**: the first one fades in when someone hovers over the project.
+   - **Phone screenshot**: a tall screenshot of the site on a phone, about 390 × 780 pixels. It shows inside the phone next to the laptop when the project is featured. Leave it empty and a simple grey sketch is shown instead.
    - **Live website link** or **Demo link**: the full address, starting with `https://`. Leave both empty if there's nothing to link to yet.
    - **Tags**: a few short words.
    - **Featured**: tick this for the project shown big at the top of *Recent work* when the page opens. Only tick one. Visitors can click any project in the carousel to show it there instead.

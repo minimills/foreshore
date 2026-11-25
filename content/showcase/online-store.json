@@ -1,18 +1,23 @@
 {
-  "title": "Online Store",
-  "type": "Website concept",
-  "status": "Coming soon",
-  "summary": "A simple online store for a local maker, with product pages, secure checkout and local pickup or shipping.",
-  "cover": "",
-  "screenshots": [],
+  "title": "V.VI.IX",
+  "type": "Website",
+  "status": "Live",
+  "summary": "An online store for a clothing label, with easy size selection, clean product galleries, secure checkout",
+  "cover": "/images/569/569-web.png",
+ "screenshots": [
+    "/images/569/569-web.png",
+    "/images/569/569-web-2.png",
+    "/images/569/569-web-3.png"
+  ],
+  "mobileScreenshot": "/images/569/569-mobile.png",
   "liveUrl": "",
-  "demoUrl": "",
+  "demoUrl": "https://569drip.github.io/569/",
   "tags": [
     "E-commerce",
     "Products"
   ],
   "featured": false,
   "order": 4,
-  "hasPage": false,
+  "hasPage": true,
   "details": []
 }

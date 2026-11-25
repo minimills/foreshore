@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1080 1350" preserveAspectRatio="xMidYMax slice">
+  <defs>
+    <linearGradient id="sun" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f6f6ec"/><stop offset="1" stop-color="#c9cfae"/></linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9ba685"/><stop offset="1" stop-color="#455230"/></linearGradient>
+    <linearGradient id="sand" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d8d4b4"/><stop offset="1" stop-color="#b9b48f"/></linearGradient>
+  </defs>
+  <circle cx="540" cy="800" r="260" fill="url(#sun)"/>
+  <g fill="#c9cfae"><rect x="260" y="730" width="560" height="10"/><rect x="260" y="770" width="560" height="16"/><rect x="260" y="815" width="560" height="22"/></g>
+  <path d="M1080 640 C900 650 780 700 680 780 L620 870 L1080 880 Z" fill="#637545"/>
+  <path d="M1080 640 C900 650 780 700 680 780 L672 794 C780 718 900 668 1080 662 Z" fill="#9ba685"/>
+  <g transform="translate(880 470)">
+    <path d="M10 210 L24 0 H56 L70 210 Z" fill="#f6f6ec"/>
+    <path d="M18 120 H62 L65 160 H15 Z M24 40 H56 L58 75 H22 Z" fill="#637545"/>
+    <rect x="18" y="-34" width="44" height="34" rx="4" fill="#455230"/>
+    <rect x="26" y="-28" width="28" height="22" fill="#ebebd8"/>
+    <path d="M12 -34 L40 -64 L68 -34 Z" fill="#637545"/>
+  </g>
+  <rect x="0" y="870" width="1080" height="480" fill="url(#sea)"/>
+  <g fill="none" stroke="#ebebd8" stroke-width="5" stroke-linecap="round" opacity=".7">
+    <path d="M340 910 h400 M400 950 h280 M460 990 h160"/>
+    <path d="M80 960 c40 -18 80 18 120 0 s80 18 120 0"/>
+  </g>
+  <path d="M0 1160 C300 1110 700 1200 1080 1140 V1350 H0 Z" fill="url(#sand)"/>
+  <path d="M0 1160 C300 1110 700 1200 1080 1140" fill="none" stroke="#f6f6ec" stroke-width="6" opacity=".55"/>
+</svg>

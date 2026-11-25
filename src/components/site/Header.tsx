@@ -1,5 +1,6 @@
 import Link from "next/link";
 import BrandMark from "./BrandMark";
+import MobileMenu from "./MobileMenu";
 import { getSite } from "@/lib/content";
 
 export function Nav({ ghost = false }: { ghost?: boolean }) {
@@ -13,9 +14,7 @@ export function Nav({ ghost = false }: { ghost?: boolean }) {
     >
       <Link className="brand" href="/#top">
         <BrandMark />
-        <span className="brand-text">
-          {site.studioName} <span className="brand-label">by {site.ownerName}</span>
-        </span>
+        <span className="brand-text">{site.studioName}</span>
       </Link>
       <div className="nav-links">
         {site.navLinks.map((l) => (
@@ -30,6 +29,7 @@ export function Nav({ ghost = false }: { ghost?: boolean }) {
           →
         </span>
       </Link>
+      <MobileMenu links={site.navLinks} buttonLabel={site.mainButton} />
     </nav>
   );
 }

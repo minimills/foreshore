@@ -55,7 +55,7 @@ export default function RootLayout({
   return (
     <html
       lang="en-CA"
-      data-skin="motel"
+      data-skin="foreshore"
       className={`${inter.variable} ${sora.variable} ${anton.variable} reveal-on`}
     >
       <body>{children}</body>
