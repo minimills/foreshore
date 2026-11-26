@@ -29,7 +29,7 @@ export default async function Footer() {
       <div className="footer-links">
         {site.phone && <a href={`tel:${site.phone.replace(/[^\d+]/g, "")}`}>{site.phone}</a>}
         {site.email && <a href={`mailto:${site.email}`}>{site.email}</a>}
-        {site.socials.map((s) => (
+        {(site.socials ?? []).map((s) => (
           <a key={s.link} href={s.link} rel="me noopener" target="_blank">
             {s.label}
           </a>

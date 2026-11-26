@@ -25,9 +25,10 @@ export type Site = {
   province: string;
   provinceShort: string;
   country: string;
-  email: string;
-  phone: string;
-  socials: Link[];
+  email?: string;
+  phone?: string;
+  /* Pages CMS drops these keys when they are left empty. */
+  socials?: Link[];
   mainButton: string;
   navLinks: Link[];
   footerLinks: Link[];
