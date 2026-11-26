@@ -573,6 +573,14 @@ html[data-skin="foreshore"] .enquiry :is(input, textarea)::placeholder { color: 
 .footer a { color: #fff; }
 .footer-brand { align-items: center; gap: 10px; display: flex; }
 .footer-links { flex-wrap: wrap; gap: 8px 20px; display: flex; }
+.footer-socials { gap: 8px; margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; }
+.footer-socials a {
+  border: 1px solid #ffffff33; border-radius: 50%;
+  justify-content: center; align-items: center; width: 44px; height: 44px; display: inline-flex;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+.footer-socials a:hover { background: #ffffff1f; border-color: #ffffff80; }
+.footer-socials a:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1024px) {

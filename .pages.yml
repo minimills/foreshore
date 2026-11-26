@@ -99,6 +99,29 @@ content:
           multiple: true
 
   # ---------------------------------------------------------------- Pages
+  - name: footer
+    label: Footer
+    type: file
+    path: content/footer.json
+    format: json
+    fields:
+      - name: socials
+        label: Social media
+        description: Each one shows as an icon in the footer. Leave the list empty to show none.
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{platform}"
+        fields:
+          - name: platform
+            label: Platform
+            type: select
+            required: true
+            options:
+              values: [Instagram, Facebook, LinkedIn, TikTok, X, YouTube, GitHub, Website]
+          - { name: link, label: Full address, type: string, required: true, description: "e.g. https://instagram.com/foreshorestudio" }
+
   - name: site
     label: Site settings
     type: file
@@ -113,13 +136,6 @@ content:
       - { name: country, label: Country, type: string }
       - { name: email, label: Email, type: string, description: Leave empty to hide it on the site. }
       - { name: phone, label: Phone, type: string, description: Leave empty to hide it on the site. }
-      - name: socials
-        label: Social links
-        type: object
-        list: true
-        fields:
-          - { name: label, label: Name (e.g. Instagram), type: string }
-          - { name: link, label: Full address, type: string }
       - { name: mainButton, label: Main button text, type: string }
       - name: navLinks
         label: Top menu links

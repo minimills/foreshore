@@ -27,12 +27,18 @@ export type Site = {
   country: string;
   email?: string;
   phone?: string;
-  /* Pages CMS drops these keys when they are left empty. */
-  socials?: Link[];
   mainButton: string;
   navLinks: Link[];
   footerLinks: Link[];
   seo: { title: string; description: string };
+};
+
+export type SocialPlatform =
+  | "Instagram" | "Facebook" | "LinkedIn" | "TikTok" | "X" | "YouTube" | "GitHub" | "Website";
+
+export type Footer = {
+  /* Optional: Pages CMS drops the key when the list is left empty. */
+  socials?: { platform: SocialPlatform; link: string }[];
 };
 
 export type Hero = {
@@ -152,6 +158,7 @@ export type PackagePage = {
 };
 
 export const getSite = () => read<Site>("site.json");
+export const getFooter = () => read<Footer>("footer.json");
 export const getHero = () => read<Hero>("hero.json");
 export const getWork = () => read<Work>("work.json");
 export const getPricing = () => read<Pricing>("pricing.json");
