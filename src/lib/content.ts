@@ -12,8 +12,42 @@ export type { Project, Section } from "./format";
 
 const CONTENT_DIR = path.join(process.cwd(), "content");
 
-function read<T>(file: string): T {
-  return JSON.parse(fs.readFileSync(path.join(CONTENT_DIR, file), "utf8")) as T;
+/*
+ * Pages CMS writes an empty file when every item in a list is deleted, and
+ * drops keys whose value is blank. So a missing file, an empty file, or a
+ * missing key all mean "nothing set here" rather than an error. Each getter
+ * below fills in its own defaults, so a component never receives undefined
+ * where it expects a list.
+ */
+function read<T>(file: string): Partial<T> {
+  let raw: string;
+  try {
+    raw = fs.readFileSync(path.join(CONTENT_DIR, file), "utf8");
+  } catch {
+    return {};
+  }
+  if (!raw.trim()) return {};
+  try {
+    return (JSON.parse(raw) ?? {}) as Partial<T>;
+  } catch (err) {
+    throw new Error(`content/${file} is not valid JSON: ${(err as Error).message}`);
+  }
+}
+
+/** Keeps a list usable even when the CMS leaves the key out entirely. */
+const list = <T>(v: T[] | undefined): T[] => (Array.isArray(v) ? v : []);
+
+/*
+ * Lays the saved content over a complete set of defaults, so every field the
+ * site reads always exists. Keys the CMS dropped (or saved as blank) fall back
+ * to the default instead of arriving as undefined.
+ */
+function withDefaults<T extends object>(defaults: T, saved: Partial<T>): T {
+  const out = { ...defaults };
+  for (const [k, v] of Object.entries(saved)) {
+    if (v !== undefined && v !== null) out[k as keyof T] = v as T[keyof T];
+  }
+  return out;
 }
 
 export type Link = { label: string; link: string };
@@ -157,22 +191,184 @@ export type PackagePage = {
   backLink: string;
 };
 
-export const getSite = () => read<Site>("site.json");
-export const getFooter = () => read<Footer>("footer.json");
-export const getHero = () => read<Hero>("hero.json");
-export const getWork = () => read<Work>("work.json");
-export const getPricing = () => read<Pricing>("pricing.json");
-export const getProcess = () => read<Process>("process.json");
-export const getAbout = () => read<About>("about.json");
-export const getFaq = () => read<Faq>("faq.json");
-export const getContact = () => read<Contact>("contact.json");
-export const getPackagePage = () => read<PackagePage>("package-page.json");
-export const getLegal = (page: "privacy" | "terms") => read<Legal>(`legal/${page}.json`);
+const SITE_DEFAULTS: Site = {
+  studioName: "",
+  ownerName: "",
+  city: "",
+  province: "",
+  provinceShort: "",
+  country: "",
+  mainButton: "",
+  navLinks: [],
+  footerLinks: [],
+  seo: { title: "", description: "" },
+};
+
+export const getSite = (): Site => {
+  const d = withDefaults(SITE_DEFAULTS, read<Site>("site.json"));
+  return {
+    ...d,
+    navLinks: list(d.navLinks),
+    footerLinks: list(d.footerLinks),
+    seo: withDefaults(SITE_DEFAULTS.seo, d.seo ?? {}),
+  };
+};
+
+export const getFooter = (): Footer => ({ socials: list(read<Footer>("footer.json").socials) });
+
+const HERO_DEFAULTS: Hero = {
+  eyebrow: "",
+  headingLine1: "",
+  headingLine2: "",
+  subheading: "",
+  primaryButton: "",
+  secondaryButton: "",
+  stepsCardTitle: "",
+  introCardTitle: "",
+  introCardText: "",
+  avatar: "",
+  checklist: [],
+  sceneImage: "",
+  sceneImageMobile: "",
+  floatingIcons: [],
+};
+
+export const getHero = (): Hero => {
+  const d = withDefaults(HERO_DEFAULTS, read<Hero>("hero.json"));
+  return { ...d, checklist: list(d.checklist), floatingIcons: list(d.floatingIcons) };
+};
+
+const WORK_DEFAULTS: Work = {
+  heading: "",
+  note: "",
+  allWorkLink: "",
+  pageHeading: "",
+  pageIntro: "",
+  featuredButtonPage: "",
+  featuredButtonLive: "",
+  featuredButtonDemo: "",
+  featuredButtonOther: "",
+  inviteTile: { show: false, title: "", label: "", text: "" },
+  projectBackLink: "",
+  screenshotsHeading: "",
+  projectCtaHeading: "",
+  projectCtaButton: "",
+  liveButton: "",
+  demoButton: "",
+};
+
+export const getWork = (): Work => {
+  const d = withDefaults(WORK_DEFAULTS, read<Work>("work.json"));
+  return { ...d, inviteTile: withDefaults(WORK_DEFAULTS.inviteTile, d.inviteTile ?? {}) };
+};
+
+const PRICING_DEFAULTS: Pricing = {
+  heading: "",
+  intro: "",
+  buttonText: "",
+  popularLabel: "",
+  carePlansHeading: "",
+  carePlans: [],
+  notes: [],
+};
+
+export const getPricing = (): Pricing => {
+  const d = withDefaults(PRICING_DEFAULTS, read<Pricing>("pricing.json"));
+  return {
+    ...d,
+    notes: list(d.notes),
+    carePlans: list(d.carePlans).map((c) => ({
+      name: c?.name ?? "",
+      priceYearly: c?.priceYearly ?? "",
+      priceMonthly: c?.priceMonthly ?? "",
+      description: c?.description ?? "",
+      features: list(c?.features),
+    })),
+  };
+};
+
+export const getProcess = (): Process => {
+  const d = withDefaults<Process>({ heading: "", steps: [], note: "" }, read<Process>("process.json"));
+  return {
+    ...d,
+    steps: list(d.steps).map((st) => ({
+      title: st?.title ?? "",
+      time: st?.time ?? "",
+      text: st?.text ?? "",
+    })),
+  };
+};
+
+export const getAbout = (): About =>
+  withDefaults<About>(
+    { heading: "", text: "", portrait: "", portraitAlt: "" },
+    read<About>("about.json"),
+  );
+
+export const getFaq = (): Faq => {
+  const d = withDefaults<Faq>({ heading: "", items: [] }, read<Faq>("faq.json"));
+  return {
+    ...d,
+    items: list(d.items).map((i) => ({ question: i?.question ?? "", answer: i?.answer ?? "" })),
+  };
+};
+
+const CONTACT_DEFAULTS: Contact = {
+  heading: "",
+  intro: "",
+  nameLabel: "",
+  emailLabel: "",
+  phoneLabel: "",
+  businessLabel: "",
+  projectTypeQuestion: "",
+  projectTypeOptions: [],
+  packageQuestion: "",
+  packagePlaceholder: "",
+  notSureOption: "",
+  goalQuestion: "",
+  goalPlaceholder: "",
+  privacyText: "",
+  privacyLinkText: "",
+  buttonText: "",
+  emailPrompt: "",
+  formAccessKey: "",
+  emailSubject: "",
+};
+
+export const getContact = (): Contact => {
+  const d = withDefaults(CONTACT_DEFAULTS, read<Contact>("contact.json"));
+  return { ...d, projectTypeOptions: list(d.projectTypeOptions) };
+};
+
+export const getPackagePage = (): PackagePage =>
+  withDefaults<PackagePage>(
+    {
+      includedHeading: "",
+      whoItsForHeading: "",
+      screenshotsHeading: "",
+      buttonText: "",
+      backLink: "",
+    },
+    read<PackagePage>("package-page.json"),
+  );
+
+export const getLegal = (page: "privacy" | "terms"): Legal => {
+  const d = withDefaults<Legal>(
+    { title: "", lastUpdated: "", intro: "", sections: [] },
+    read<Legal>(`legal/${page}.json`),
+  );
+  return { ...d, sections: list(d.sections) };
+};
 
 /** Reads every .json file in a content folder. The file name becomes the page address (slug). */
 function readFolder<T>(folder: string): (Partial<T> & { slug: string })[] {
-  return fs
-    .readdirSync(path.join(CONTENT_DIR, folder))
+  let files: string[];
+  try {
+    files = fs.readdirSync(path.join(CONTENT_DIR, folder));
+  } catch {
+    return [];
+  }
+  return files
     .filter((f) => f.endsWith(".json"))
     .map((f) => ({ ...read<Partial<T>>(`${folder}/${f}`), slug: f.replace(/\.json$/, "") }));
 }
