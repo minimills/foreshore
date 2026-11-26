@@ -1,13 +1,31 @@
 {
   "title": "Privacy policy",
-  "lastUpdated": "DRAFT: November 2026",
-  "intro": "DRAFT: please review this, ideally with a professional, before relying on it. Foreshore Studio (\"I\", \"me\") is a small web design business in Charlottetown, Prince Edward Island, Canada. This policy explains what personal information I collect through this website and how I handle it, in line with Canada's Personal Information Protection and Electronic Documents Act (PIPEDA).",
+  "lastUpdated": "November 2026",
+  "intro": "Foreshore Studio (\"I\", \"me\") is a small web design business in Charlottetown, Prince Edward Island, Canada. This policy explains what personal information I collect through this website and how I handle it, in line with Canada's Personal Information Protection and Electronic Documents Act (PIPEDA).",
   "sections": [
-    { "heading": "What I collect", "text": "When you send an enquiry, I collect the details you choose to give me: your name, email address, and optionally your phone number, business name and project details. I don't use advertising or tracking cookies on this website." },
-    { "heading": "How I use it", "text": "I use your details only to reply to your enquiry, prepare a quote and, if we work together, run your project. I don't sell or rent your information, and I don't add you to a mailing list without asking." },
-    { "heading": "Who else sees it", "text": "Enquiries are delivered to my inbox through a form service, and the website is hosted by a web hosting provider. These services may store data outside Canada. They only handle your information so that the website and form can work." },
-    { "heading": "How long I keep it", "text": "I keep enquiry emails for as long as I need them to respond and for my business records, then delete them. Client project records are kept as required for tax and accounting purposes." },
-    { "heading": "Your choices", "text": "You can ask to see the information I hold about you, ask me to correct it or ask me to delete it. Just email me and I'll respond within 30 days. If you're not satisfied with my response, you can contact the Office of the Privacy Commissioner of Canada." },
-    { "heading": "Contact", "text": "Questions about privacy? Get in touch using the contact form or the email address on this website." }
+    {
+      "heading": "What I collect",
+      "text": "When you send an enquiry, I collect the details you choose to give me: your name, email address, and optionally your phone number, business name and project details. I don't use advertising or tracking cookies on this website."
+    },
+    {
+      "heading": "How I use it",
+      "text": "I use your details only to reply to your enquiry, prepare a quote and, if we work together, run your project. I don't sell or rent your information, and I don't add you to a mailing list without asking."
+    },
+    {
+      "heading": "Who else sees it",
+      "text": "Enquiries are delivered to my inbox through a form service, and the website is hosted by a web hosting provider. These services may store data outside Canada. They only handle your information so that the website and form can work."
+    },
+    {
+      "heading": "How long I keep it",
+      "text": "I keep enquiry emails for as long as I need them to respond and for my business records, then delete them. Client project records are kept as required for tax and accounting purposes."
+    },
+    {
+      "heading": "Your choices",
+      "text": "You can ask to see the information I hold about you, ask me to correct it or ask me to delete it. Just email me and I'll respond within 30 days. If you're not satisfied with my response, you can contact the Office of the Privacy Commissioner of Canada."
+    },
+    {
+      "heading": "Contact",
+      "text": "Questions about privacy? Get in touch using the contact form or the email address on this website."
+    }
   ]
 }

@@ -5,9 +5,6 @@
   "province": "Prince Edward Island",
   "provinceShort": "PE",
   "country": "Canada",
-  "email": "",
-  "phone": "",
-  "socials": [],
   "mainButton": "Start your project",
   "navLinks": [
     {
@@ -54,7 +51,7 @@
     }
   ],
   "seo": {
-    "title": "Web Design for Small Businesses in PEI | Foreshore Studio",
-    "description": "Friendly, fixed-price websites for small businesses in Charlottetown and across Prince Edward Island. Websites from $499 CAD, designed, built and looked after by one local person."
+    "title": "Web Design for Small Businesses | Foreshore Studio",
+    "description": "Friendly, fixed-price websites for small businesses. Build to represent your brand!"
   }
 }
